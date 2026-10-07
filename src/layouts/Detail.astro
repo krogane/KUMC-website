@@ -1,0 +1,19 @@
+---
+import Arrow from '../components/Arrow.astro';
+import {render,type CollectionEntry} from 'astro:content';import {Image} from 'astro:assets';import Layout from './Layout.astro';import {images} from '../lib/images';import {dateLabel,published} from '../lib/content';
+interface Props{entry:CollectionEntry<'works'>|CollectionEntry<'achievements'>|CollectionEntry<'news'>;kind:'works'|'achievements'|'news'}
+const {entry,kind}=Astro.props;const d=entry.data;const {Content}=await render(entry);
+const label={works:'作品',achievements:'活動実績',news:'ニュース'}[kind];
+const relatedWorks=(await published('works')).filter(w=>d.relatedWorkIds.includes(w.data.slug));
+const relatedAchievements=(await published('achievements')).filter(a=>d.relatedAchievementIds.includes(a.data.slug));
+---
+<Layout title={d.title} description={d.summary} image={d.cover?`/og/${d.cover}.jpg`:undefined} imageAlt={d.coverAlt} article={kind==='works'?undefined:{publishedAt:d.publishedAt,updatedAt:d.updatedAt}} breadcrumbs={[{name:label,url:`/${kind}/`},{name:d.title,url:`/${kind}/${d.slug}/`}]}>
+<div class="container page-heading"><nav class="breadcrumbs" aria-label="パンくず"><a href="/">トップ</a><span>/</span><a href={`/${kind}/`}>{label}</a><span>/</span><span>{d.title}</span></nav><h1>{d.title}</h1><p class="page-lead">{d.summary}</p></div>
+<div class="container page-content">{d.cover&&<figure class="detail-hero"><Image src={images[d.cover]} alt={d.coverAlt||d.title} widths={[320,600,960]} sizes="(max-width: 1000px) calc(100vw - 40px), 960px" format="webp" loading="eager"/><figcaption>{d.coverAlt}</figcaption></figure>}<div class="prose" style="margin-inline:auto">
+{entry.collection==='works'&&<><dl class="info-list"><dt>公開状況</dt><dd>{entry.data.status}</dd><dt>対応版</dt><dd>{entry.data.edition.join(' / ')}</dd><dt>配布版のバージョン</dt><dd>{entry.data.supportedVersions.join(' / ')}</dd><dt>情報確認日</dt><dd>{dateLabel(d.checkedAt)}</dd></dl>{entry.data.status==='公開中'&&<div class="actions">{entry.data.downloads.map(dl=><a class="button" href={dl.url} data-event="work_download_click" data-work-id={d.slug} data-placement="work">{dl.label} <Arrow external/></a>)}</div>}<p class="muted">対応版・バージョンは公開配布ページに基づきます。イベントで使用する版とは異なる場合があります。最新の導入方法・利用条件は配布先でご確認ください。</p></>}
+{entry.collection==='achievements'&&<dl class="info-list"><dt>実施日</dt><dd>{dateLabel(entry.data.eventDate)}{entry.data.eventEndDate&&`〜${dateLabel(entry.data.eventEndDate)}`}</dd><dt>KUMCの担当</dt><dd>{entry.data.role}</dd><dt>実施内容・成果</dt><dd>{entry.data.outcome}</dd></dl>}
+{entry.collection==='news'&&<p class="muted">公開日：<time datetime={d.publishedAt}>{dateLabel(d.publishedAt)}</time>{d.updatedAt&&` ／ 更新日：${dateLabel(d.updatedAt)}`}</p>}
+<Content/>
+{entry.collection==='works'&&entry.data.gallery.map(g=><figure class="gallery"><Image src={images[g.image]} alt={g.alt} widths={[320,600,960]} sizes="(max-width: 800px) calc(100vw - 40px), 760px" format="webp" loading="lazy"/><figcaption>{g.alt}</figcaption></figure>)}
+{d.publicSourceUrls.length>0&&<section class="detail-related"><h2>関連する公開情報</h2><ul>{d.publicSourceUrls.map((url,i)=><li><a href={url}>{new URL(url).hostname==='minecraft-mcworld.com'?'作品の公式配布ページ':new URL(url).hostname==='kumc.hatenablog.com'?'KUMC公式ブログの活動報告':'協力先による公開開催報告'}{d.publicSourceUrls.length>1?`（${i+1}）`:''} <Arrow external/></a></li>)}</ul><p class="muted">情報確認日：{dateLabel(d.checkedAt)}</p></section>}
+{relatedWorks.length>0&&<section class="detail-related"><h2>関連作品</h2><ul>{relatedWorks.map(w=><li><a href={`/works/${w.data.slug}/`}>{w.data.title}</a></li>)}</ul></section>}{relatedAchievements.length>0&&<section class="detail-related"><h2>関連実績</h2><ul>{relatedAchievements.map(a=><li><a href={`/achievements/${a.data.slug}/`}>{a.data.title}</a></li>)}</ul></section>}<div class="actions"><a class="text-link" href={`/${kind}/`}>{label}の一覧へ戻る</a></div></div></div></Layout>

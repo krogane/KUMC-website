@@ -3,17 +3,42 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": "22.23.3" },
+  "engines": {
+    "node": "22.23.3"
+  },
   "scripts": {
-    "dev": "astro dev --host 127.0.0.1",
-    "check": "astro check && node scripts/validate-content.mjs",
+    "dev": "node scripts/astro.mjs dev --host 127.0.0.1",
+    "check": "node scripts/astro.mjs check && node scripts/validate-content.mjs",
     "test": "node --test tests/*.test.mjs",
     "feeds": "node scripts/fetch-feeds.mjs",
-    "build": "node scripts/validate-content.mjs && astro build && node scripts/verify-dist.mjs",
-    "preview": "astro preview --host 127.0.0.1",
+    "build": "node scripts/validate-content.mjs && node scripts/prepare-images.mjs && node scripts/astro.mjs build && node scripts/verify-dist.mjs",
+    "preview": "node scripts/astro.mjs preview --host 127.0.0.1",
     "test:e2e": "playwright test",
     "verify": "npm run check && npm test && npm run build",
     "audit:secrets": "node scripts/scan-secrets.mjs",
-    "audit:performance": "node scripts/lighthouse.mjs"
+    "audit:performance": "node scripts/lighthouse.mjs",
+    "test:publication": "node scripts/test-publication.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.2",
+    "astro": "7.3.6",
+    "fast-xml-parser": "5.11.2",
+    "fast-xml-validator": "1.4.2",
+    "rehype-sanitize": "6.0.0",
+    "sanitize-html": "2.18.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.6.4",
+    "cheerio": "1.2.0",
+    "chrome-launcher": "1.2.2",
+    "lighthouse": "13.5.0",
+    "node": "22.23.3",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3",
+    "yaml": "2.9.1"
   }
 }

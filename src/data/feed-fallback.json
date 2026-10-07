@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "sources": {
+    "blog": {
+      "fetchedAt": "2026-10-07T06:42:31.677Z",
+      "items": [
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2026/03/30/160122",
+          "title": "2025年NFの記録",
+          "url": "https://kumc.hatenablog.com/entry/2026/03/30/160122",
+          "publishedAt": "2026-03-30T07:01:22.000Z",
+          "summary": "皆さんこんにちは。KUMC新会長のくろがねです。昨年（2025年）開催された京都大学11月祭、通称NFにおいて、私たちKUMCはMinecraftを使った屋内出展を行いました。4日間で推定約3000人以上の方がKUMCの出展に来場していただ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/11/01/193054",
+          "title": "【京大マイクラ同好会×エンドラRTA軍団】「謎解きBINGO」問題＆解説を全公開！",
+          "url": "https://kumc.hatenablog.com/entry/2025/11/01/193054",
+          "publishedAt": "2025-11-01T10:30:54.000Z",
+          "summary": "こんにちは！京大マインクラフト同好会KUMCです！ この度、エンドラRTA軍団さん（以下ERC）とのスペシャルコラボ企画として開催した「謎解きBINGO」の動画はもうご覧いただけたでしょうか？ ERCチームとKUMCチームに３対３で分かれて"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/05/30/183922",
+          "title": "【新歓企画紹介】KUMCの創造性爆発企画「建築しりとり」とは？",
+          "url": "https://kumc.hatenablog.com/entry/2025/05/30/183922",
+          "publishedAt": "2025-05-30T09:39:22.000Z",
+          "summary": "こんにちは！KUMCの社不です！ 今回は、新歓企画としても大好評の超オモシロ企画「建築しりとり」についてご紹介します。 建築しりとりとは？ 「建築しりとり」は、その名の通り「絵しりとり」をマイクラの建築で再現したものです。従来のしりとりとは"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/05/28/154315",
+          "title": "京大マインクラフト同好会がお届けする、創造と冒険の結晶！会報誌「KU匠」で広がるマイクラの世界",
+          "url": "https://kumc.hatenablog.com/entry/2025/05/28/154315",
+          "publishedAt": "2025-05-28T06:43:15.000Z",
+          "summary": "こんにちは！京大マインクラフト同好会KUMCの社不です。私たちが情熱を注いで制作した会報誌、その名も「KU匠」について、皆さんにぜひご紹介させてください。 「KU匠」は、KUMCのメンバーそれぞれの「好き」と「こだわり」が詰まった、まさにマ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/05/20/160000",
+          "title": "PvPが苦手でも大丈夫！誰でも盛り上がれる「BLOCK HIDE」【新歓企画紹介】",
+          "url": "https://kumc.hatenablog.com/entry/2025/05/20/160000",
+          "publishedAt": "2025-05-20T07:00:00.000Z",
+          "summary": "今回ご紹介するのは新歓企画の中でも一風変わった「BLOCK HIDE」です。 これは、誰もが知る「かくれんぼ」をMinecraft風にアレンジした新感覚のゲーム。 銃を使ったPvPが苦手な方でも、十分に楽しめる内容となっています。 このゲー"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/05/16/154846",
+          "title": "1000個の宝を探し出せ！京大トレジャーラン【新歓企画紹介】",
+          "url": "https://kumc.hatenablog.com/entry/2025/05/16/154846",
+          "publishedAt": "2025-05-16T06:48:46.000Z",
+          "summary": "京都大学吉田キャンパス本部構内を余すところなく舞台にした ―― それが今回ご紹介する大規模宝探しマップ「京大トレジャーラン」です。 設置されたお宝は実に約1000個。 緑豊かな中庭から歴史ある研究棟の屋上、枝葉の茂る街路樹の上、さらには普段"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/05/12/173346",
+          "title": "NFで大行列！大人気銃PvPが新歓に登場。【新歓企画紹介】",
+          "url": "https://kumc.hatenablog.com/entry/2025/05/12/173346",
+          "publishedAt": "2025-05-12T08:33:46.000Z",
+          "summary": "今回、新歓企画としてご紹介するのは、Minecraftで本格的な銃撃戦（対人戦）が楽しめるマップです！ 昨年の学園祭NFでは予想を遥かに超える大盛況となり、プレイを待つ人々で長蛇の列ができるほどでした。 今回の新歓では、その大人気マップをさ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/28/185542",
+          "title": "【コマンド編②】飛び込み攻撃とスタン、ゾンビを操る技術。",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/28/185542",
+          "publishedAt": "2025-04-28T09:55:42.000Z",
+          "summary": "こんにちは、KUMCのくろがねです。 今回も前回に続き、オープンワールドRPG「CRONOS」に使われている技術を、変わった語り口でご紹介していきます。 まだ前回までの記事を読んでいない方は、ぜひそちらもチェックしてみてください。 kumc"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/21/160000_1",
+          "title": "タイム短縮の鍵はここに――京大アスレの隠しルート集",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/21/160000_1",
+          "publishedAt": "2025-04-21T07:00:00.000Z",
+          "summary": "こんにちは、KUMCのくろがねです。 今回は京大アスレチックマップに隠されたショートカットルートを紹介していきます！ 正式なショートカットはハードステージにしか存在しないので、今回紹介するのはすべてハードステージのものになります。 ところで"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/21/160000",
+          "title": "時計台を駆けのぼれ！本格アスレマップ解禁【新歓企画紹介】",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/21/160000",
+          "publishedAt": "2025-04-21T07:00:00.000Z",
+          "summary": "今回は、4月19日に開催された新歓アスレ企画に際して制作された、本格アスレチックマップについてご紹介します！ まだ知らない方にも、すでに挑戦してくれた方にも、各コースの魅力や舞台裏をたっぷりご紹介していきます。ぜひ最後までお楽しみください。"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/14/180000",
+          "title": "【コマンド編①】かまどが鍵を握る!? 白スライム設置検知のしくみ",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/14/180000",
+          "publishedAt": "2025-04-14T09:00:00.000Z",
+          "summary": "こんにちは、KUMCのくろがねです。 前回までの「ゲームデザイン編」をお読みいただいた皆さま、ありがとうございます。 kumc.hatenablog.com 今回は番外編として、データパックなど技術的な仕掛けの一例をご紹介します。皆さんにわ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/12/180000",
+          "title": "【ゲームデザイン編③】“自然に遊べる”を作る：Minecraftマップにおけるシステム設計の裏側",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/12/180000",
+          "publishedAt": "2025-04-12T09:00:00.000Z",
+          "summary": "こんにちは、KUMCのくろがねです。 今回ご紹介するのは、Minecraftにおける戦闘や探索、UIの在り方について、少しだけ踏み込んだ工夫の記録です。 「パリィ」や「ブロックに意味を持たせる試み」、そして「経験値バーを使ったスタミナシステ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/10/190000",
+          "title": "【ゲームデザイン編②】プレイヤー体験を支える「見えない工夫」――マイクラRPGにおける快適性の追求",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/10/190000",
+          "publishedAt": "2025-04-10T10:00:00.000Z",
+          "summary": "どうも、KUMCのくろがねです！ 前回の記事では、私がRPGマップ制作で大切にしている「ストレスのないゲーム体験」について、導入的な視点からお話ししました。 kumc.hatenablog.com ここでいう“ストレス”とは、ただ難しいだけ"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/08/171606",
+          "title": "【ゲームデザイン編①】“快適さ”が生み出す没入感とは？ ― オープンワールドRPGにおける「ストレス設計」の考え方",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/08/171606",
+          "publishedAt": "2025-04-08T08:16:06.000Z",
+          "summary": "どうも、KUMCのくろがねです。 前回のコンセプト編では、オープンワールドRPGマップを作る際の「世界観やテーマ設定」の重要性について紹介しました。 kumc.hatenablog.com 今回から始まるゲームデザイン編では、このコンセプト"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/04/02/233010",
+          "title": "【コンセプト編】MinecraftでオープンワールドRPGマップ作るには",
+          "url": "https://kumc.hatenablog.com/entry/2025/04/02/233010",
+          "publishedAt": "2025-04-02T14:30:10.000Z",
+          "summary": "どうも、KUMCのくろがねと申します。 今回は、私が一年以上作ってきたMinecraftのオープンワールドRPGマップ「CRONOS」について、「どうやって作ってるの？」「何を考えて作ってるの？」みたいな部分をまとめてみようと思います。正直"
+        },
+        {
+          "source": "blog",
+          "sourceId": "https://kumc.hatenablog.com/entry/2025/03/01/124051",
+          "title": "KUMCのはてなブログ、始動―――",
+          "url": "https://kumc.hatenablog.com/entry/2025/03/01/124051",
+          "publishedAt": "2025-03-01T03:40:51.000Z",
+          "summary": "こんにちは。京大マインクラフト同好会KUMCです。（公式Twitterはこちら） 2023年11月26日に当サークルが設立されてから早一年、ようやくはてなブログを開設しました。 初めての記事です。 サークルが設立されてから初となる本年度のN"
+        }
+      ]
+    },
+    "colony": {
+      "fetchedAt": "2026-10-07T06:42:31.974Z",
+      "items": [
+        {
+          "source": "colony",
+          "sourceId": "https://minecraft-mcworld.com/144375/",
+          "title": "京大トレジャーラン created by KUMC",
+          "url": "https://minecraft-mcworld.com/144375/",
+          "publishedAt": "2025-05-16T06:25:42.000Z",
+          "summary": "京都大学吉田キャンパス全域を舞台に繰り広げられる大規模宝探しマップ、 「京大トレジャーラン」へようこそ。 目指すはすべてのお宝。 探索フィールドは緑あふれる中庭から研究棟の屋上、木々の枝葉、さらに隠し建築物の内部 […]"
+        },
+        {
+          "source": "colony",
+          "sourceId": "https://minecraft-mcworld.com/140001/",
+          "title": "【PvP】本格マイクラ銃撃戦マップ created by KUMC",
+          "url": "https://minecraft-mcworld.com/140001/",
+          "publishedAt": "2025-05-12T08:26:38.000Z",
+          "summary": "普段は平和なクリエイティブやサバイバルを楽しむだけのMinecraft。 その静寂を打ち破り、弾丸が飛び交う戦場へようこそ。 目指すは勝利の頂点。 まずはロビーにてチームを選び、自分のプレイスタイルに合った5種類 […]"
+        },
+        {
+          "source": "colony",
+          "sourceId": "https://minecraft-mcworld.com/138433/",
+          "title": "時計台に登れ！ 京大アスレチック created by KUMC",
+          "url": "https://minecraft-mcworld.com/138433/",
+          "publishedAt": "2025-05-03T07:31:43.000Z",
+          "summary": "京大を、駆けろ。 ちょっとだけ悪いこと、してみませんか？ 普段なら立ち入れない場所、登れない屋根、飛び越えちゃいけない段差—— そんな「怒られそうなこと」を、堂々と楽しめる日が来ました。 目指すは、時計台。 京都大学吉田 […]"
+        },
+        {
+          "source": "colony",
+          "sourceId": "https://minecraft-mcworld.com/112539/",
+          "title": "京大再現マップ: Bedrock Edition -created by KUMC",
+          "url": "https://minecraft-mcworld.com/112539/",
+          "publishedAt": "2024-12-19T04:34:46.000Z",
+          "summary": "Kyoto University in Minecraft: Bedrock Edition このワールドは京都大学吉田キャンパス中央構内を再現した建築マップです。 京大マインクラフト同好会有志で作成しました。 ワールド […]"
+        },
+        {
+          "source": "colony",
+          "sourceId": "https://minecraft-mcworld.com/111488/",
+          "title": "京大再現マップcreated by KUMC",
+          "url": "https://minecraft-mcworld.com/111488/",
+          "publishedAt": "2024-12-11T10:01:06.000Z",
+          "summary": "Kyoto University in Minecraft このワールドは京都大学吉田キャンパス中央構内を再現した建築マップです。 京大マインクラフト同好会有志で作成しました。 ワールド内を歩き回るだけで、実際の京大を […]"
+        }
+      ]
+    }
+  }
+}

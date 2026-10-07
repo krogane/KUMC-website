@@ -1,0 +1,5 @@
+---
+interface Props {external?:boolean}
+const {external=false}=Astro.props;
+---
+<svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d={external?'M6 18L18 6M7 6h11v11':'M4 12h15M13 5l7 7-7 7'}/></svg>

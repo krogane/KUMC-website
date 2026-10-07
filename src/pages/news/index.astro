@@ -1,0 +1,4 @@
+---
+import Page from '../../layouts/Page.astro';import Feed from '../../components/Feed.astro';import {published,dateLabel} from '../../lib/content';import {site} from '../../data/site';const news=await published('news');
+---
+<Page title="ニュース" label="NEWS" description="KUMCからのお知らせ、公式ブログの記事、配布作品の新着情報をお届けします。" wide><div class="prose"><h2>KUMCのお知らせ</h2><ul class="news-list">{news.map(n=><li><a href={`/news/${n.data.slug}/`}><time datetime={n.data.publishedAt}>{dateLabel(n.data.publishedAt)} ／ {n.data.category}</time><span class="news-title">{n.data.title}</span><p>{n.data.summary}</p></a></li>)}</ul></div><div class="news-columns section"><section><h2>ブログの新着記事</h2><Feed source="blog" limit={site.feedLimits.news}/></section><section><h2>配布サイトの新着作品</h2><Feed source="colony" limit={site.feedLimits.news}/></section></div></Page>

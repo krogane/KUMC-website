@@ -1,0 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import { images } from '../lib/images';
+import Arrow from './Arrow.astro';
+import type { CollectionEntry } from 'astro:content';
+interface Props {work:CollectionEntry<'works'>;heading?:'h2'|'h3'}
+const {work,heading:Heading='h3'}=Astro.props;const d=work.data;
+---
+<article class="work-card" data-category={d.category}><a href={`/works/${d.slug}/`} class="work-link">{d.cover&&<Image src={images[d.cover]} alt={d.coverAlt||d.title} widths={[320,480,640]} sizes="(max-width: 650px) calc(100vw - 40px), (max-width: 1000px) 45vw, 380px" format="webp" loading="lazy" class="work-image"/>}<div class="work-meta"><span>{d.category}</span><span>{d.status}</span></div><Heading class="work-title">{d.title}<Arrow/></Heading><p>{d.summary}</p></a></article>

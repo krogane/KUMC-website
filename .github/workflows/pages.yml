@@ -1,0 +1,104 @@
+name: Build and deploy Pages
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main' && vars.PAGES_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PUBLIC_SITE_URL: https://kumc-club.net
+      PUBLIC_ANALYTICS_ENABLED: 'false'
+      PUBLIC_GA_MEASUREMENT_ID: ''
+      PUBLIC_JOIN_URL: ${{ vars.PUBLIC_JOIN_URL }}
+      DEPLOY_TARGET: preview
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Find trusted snapshot
+        id: snapshot
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            const runs = await github.rest.actions.listWorkflowRuns({owner:context.repo.owner,repo:context.repo.repo,workflow_id:'pages.yml',branch:'main',status:'success',per_page:20});
+            for (const run of runs.data.workflow_runs) {
+              if (!['push','schedule','workflow_dispatch'].includes(run.event)) continue;
+              if (run.head_repository?.full_name !== context.payload.repository.full_name) continue;
+              const list = await github.rest.actions.listWorkflowRunArtifacts({owner:context.repo.owner,repo:context.repo.repo,run_id:run.id});
+              if (list.data.artifacts.some(a=>a.name==='feed-snapshot'&&!a.expired)) { core.setOutput('run-id',String(run.id)); break; }
+            }
+      - name: Restore trusted snapshot (bundled fallback on failure)
+        if: steps.snapshot.outputs.run-id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: feed-snapshot
+          path: .cache
+          run-id: ${{ steps.snapshot.outputs.run-id }}
+          github-token: ${{ github.token }}
+      - run: npm run feeds
+      - run: npm run verify
+      - run: npm run test:publication
+      - run: npm run audit:secrets
+      - run: npm audit --audit-level=high
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run test:e2e
+      - name: Build production (missing analytics configuration stops here)
+        run: npm run build
+        env:
+          DEPLOY_TARGET: production
+          PUBLIC_ANALYTICS_ENABLED: 'true'
+          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: feed-snapshot
+          path: .cache/feeds.json
+          include-hidden-files: true
+          retention-days: 90
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: dist
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: verification-results
+          path: |
+            .qa/playwright-results.json
+            test-results/
+          include-hidden-files: true
+          retention-days: 14
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Deploy validated static artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

@@ -1,0 +1,8 @@
+---
+import Arrow from './Arrow.astro';
+import {getFeed} from '../lib/feeds';
+import {dateLabel} from '../lib/content';
+interface Props{source:'blog'|'colony';limit?:number}
+const {source,limit=3}=Astro.props;const feed=getFeed(source);
+---
+<div class="feed"><p class="feed-source">{feed.name}</p>{feed.items.length>0?<ul class="news-list">{feed.items.slice(0,limit).map(item=><li><a href={item.url} data-event="social_click" data-platform={source} data-placement="feed"><time datetime={item.publishedAt}>{dateLabel(item.publishedAt)}</time><span class="news-title">{item.title} <Arrow external/></span><p>{item.summary}{item.summary.length>=120?'…':''}</p></a></li>)}</ul>:<p>記事は元サイトでご確認いただけます。</p>}<p class="muted" data-feed-stale data-feed-fetched={feed.fetchedAt||""} hidden={!feed.stale}>最新の情報は元サイトをご確認ください。</p>{feed.fetchedAt&&<p class="feed-date">取得確認：<time datetime={feed.fetchedAt}>{new Intl.DateTimeFormat('ja-JP',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Tokyo'}).format(new Date(feed.fetchedAt))}（日本時間）</time></p>}<a class="text-link" href={feed.home} data-event="social_click" data-platform={source} data-placement="feed">{feed.name}を見る <Arrow external/></a></div>

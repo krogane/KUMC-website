@@ -1,0 +1,9 @@
+---
+import { nav } from '../data/site';
+const current = Astro.url.pathname;
+---
+<header class="site-header"><div class="container header-inner">
+<a href="/" class="brand"><span class="wordmark">KUMC</span><span class="brand-name">京大マインクラフト<br/>同好会</span></a>
+<details class="mobile-menu"><summary aria-label="メニュー" aria-controls="mobile-navigation">メニュー <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg></summary><nav id="mobile-navigation" aria-label="モバイルナビゲーション">{nav.map(([url,label])=><a href={url} aria-current={current.startsWith(url)?'page':undefined}>{label}</a>)}<a href="/contact/">お問い合わせ</a></nav></details>
+<nav class="desktop-nav" aria-label="メインナビゲーション">{nav.map(([url,label])=><a href={url} class:list={{'nav-join':url==='/join/','nav-contact':url==='/collaboration/'}} aria-current={current.startsWith(url)?'page':undefined}>{label}</a>)}</nav>
+</div></header>

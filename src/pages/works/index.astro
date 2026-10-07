@@ -1,0 +1,5 @@
+---
+import Page from '../../layouts/Page.astro';import WorkCard from '../../components/WorkCard.astro';import Feed from '../../components/Feed.astro';import {published} from '../../lib/content';import {site} from '../../data/site';
+const works=await published('works');const categories=[...new Set(works.map(w=>w.data.category))];
+---
+<Page title="作品" label="OUR WORKS" description="ブロックを積む。仕組みをつくる。遊びを生み出す。KUMCの作品を、あなたのMinecraftでも。" wide><div class="filter-bar" role="group" aria-label="作品のカテゴリ" data-filters hidden><button type="button" data-filter="all" aria-pressed="true">すべて</button>{categories.map(c=><button type="button" data-filter={c} aria-pressed="false">{c}</button>)}</div><p id="filter-count" class="muted" role="status"></p><div class="works-grid large">{works.map(work=><WorkCard work={work} heading="h2"/>)}</div><section class="section"><h2>配布サイトの新着作品</h2><p class="muted">新しく公開された順にご紹介します。配布中のファイルや更新情報は、各配布ページでご確認ください。</p><Feed source="colony" limit={site.feedLimits.works}/></section></Page>

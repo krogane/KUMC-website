@@ -1,0 +1,6 @@
+---
+import Layout from './Layout.astro';
+interface Props {title:string;description:string;label?:string;wide?:boolean}
+const {title,description,label,wide=false}=Astro.props;
+---
+<Layout title={title} description={description} breadcrumbs={[{name:title,url:Astro.url.pathname}]}><div class="container page-heading"><nav class="breadcrumbs" aria-label="パンくず"><a href="/">トップ</a><span aria-hidden="true">/</span><span>{title}</span></nav>{label&&<p class="section-label">{label}</p>}<h1>{title}</h1><p class="page-lead">{description}</p></div><div class:list={['container','page-content',{'prose':!wide}]}><slot/></div></Layout>

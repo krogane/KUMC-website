@@ -1,0 +1,6 @@
+---
+import Page from '../../layouts/Page.astro';import activities from '../../data/activities.json';
+---
+<Page title="活動内容" label="ACTIVITIES" description="いつもの交流から、共同制作、学園祭、地域のイベントまで。自分の関心に合う活動を見つけてください。">
+{activities.map(a=><section><h2>{a.title}</h2><p>{a.text}</p></section>)}
+<h2>活動への関わり方</h2><p>例会やイベントでは、Minecraftのさまざまな遊びや、メンバーが持ち寄った企画を楽しみます。建築やコマンドの制作に加え、会報誌の執筆・編集、デザイン、サーバー管理、イベント運営などでも力を発揮できます。</p><div class="callout"><h3>自分のペースで参加できます。</h3><p>学業・仕事・生活を優先して、無理のない範囲でご参加ください。具体的な開催日時や参加方法はDiscord等で案内します。</p></div><div class="actions"><a class="button" href="/works/">作品を見る</a><a class="button secondary" href="/achievements/">活動実績を見る</a></div></Page>

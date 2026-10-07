@@ -1,0 +1,5 @@
+---
+import Arrow from './Arrow.astro';
+import {site} from '../data/site';
+---
+<section class="x-section" aria-labelledby="x-heading"><h3 id="x-heading">Xでも活動を発信しています。</h3><div class="x-reserved"><div id="x-placeholder"><span class="x-mark" aria-hidden="true">X</span><p>Xの投稿を表示すると、Xに接続します。<br/>解析の設定とは別に選択できます。</p><button type="button" class="button blue" id="load-x" hidden>Xの投稿を表示</button><noscript><p>投稿はプロフィールからご覧ください。</p></noscript><p id="x-status" role="status"></p></div><div id="x-timeline"></div></div><a href={site.x} class="text-link" data-event="social_click" data-platform="x" data-placement="embed">プロフィールを見る <Arrow external/></a><p class="muted">表示内容や順序はX側の提供状況により異なります。</p></section>

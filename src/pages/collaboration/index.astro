@@ -1,0 +1,6 @@
+---
+import Page from '../../layouts/Page.astro';import {site,emailLink} from '../../data/site';
+---
+<Page title="ご依頼・連携" label="COLLABORATION" description="Minecraftを使って、アイデアを形にする。制作・イベント・ワークショップのご相談をお待ちしています。">
+<h2>ご相談いただけること</h2><ul><li><strong>建築・マップ制作：</strong>再現建築や、遊べる空間づくり。<a href="/works/kyoto-campus/">京大再現マップ</a>をご覧ください。</li><li><strong>ゲーム・システム制作：</strong>Minecraft内のミニゲームや仕組みの制作。<a href="/works/">作品一覧</a>で紹介しています。</li><li><strong>展示・イベントへの協力：</strong>作品を遊んでもらう体験企画。<a href="/achievements/nf-2025/">学園祭での出展実績</a>をご紹介します。</li><li><strong>ワークショップ・共同企画：</strong>Minecraftを活用した地域交流や教育支援。<a href="/achievements/bosai-camp-2026/">防災キャンプの活動記録</a>をご覧ください。</li></ul>
+<div class="callout"><p>ご相談内容、時期、規模、担当可能なメンバーなどを確認し、対応の可否を検討します。費用や納期を含む条件は、個別に相談して決定します。</p></div><h2>相談から実施まで</h2><ol class="step-list"><li><h3>企画の概要をお知らせください</h3><p>目的、希望時期、対象者・規模、ご希望の協力内容、予算の目安など、分かる範囲でお送りください。</p></li><li><h3>内容と体制を相談</h3><p>KUMCで担当できる範囲や進め方を検討します。</p></li><li><h3>条件を確認して実施へ</h3><p>役割分担、日程、費用、制作物や画像の利用条件などを確認したうえで進めます。</p></li></ol><div class="actions"><a class="button" href={emailLink('制作・連携のご相談')} data-event="contact_click" data-method="email" data-placement="collaboration">メールで相談する</a><a class="button secondary" href={site.x} data-event="contact_click" data-method="x" data-placement="collaboration">Xで相談する</a></div><p class="muted">XのDMをご利用になれない場合はメールでご連絡ください。</p></Page>
