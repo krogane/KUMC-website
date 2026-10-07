@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.env
+.cache/
+.qa/
+playwright-report/
+test-results/
+.DS_Store
