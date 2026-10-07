@@ -166,19 +166,6 @@ document.addEventListener("click", (e) => {
       page_referrer: "",
     });
 });
-for (const button of document.querySelectorAll("[data-copy-email]")) {
-  button.hidden = false;
-  button.addEventListener("click", async () => {
-    const message = document.getElementById(button.dataset.copyStatus);
-    try {
-      await navigator.clipboard.writeText(button.dataset.copyEmail);
-      message.textContent = "メールアドレスをコピーしました。";
-    } catch {
-      message.textContent =
-        "コピーできませんでした。表示されているメールアドレスを選択してコピーしてください。";
-    }
-  });
-}
 const menu = document.querySelector(".mobile-menu");
 const summary = menu?.querySelector("summary");
 menu?.addEventListener("toggle", () =>

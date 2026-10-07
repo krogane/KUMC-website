@@ -98,7 +98,7 @@ const outputs = (
       .map((f) => readFile(f, "utf8")),
   )
 ).join("\n");
-for (const kind of ["works", "achievements", "news"])
+for (const kind of ["works", "achievements"])
   for (const f of await readdir(`src/content/${kind}`))
     if (f.endsWith(".md")) {
       const s = await readFile(`src/content/${kind}/${f}`, "utf8");

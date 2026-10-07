@@ -6,13 +6,14 @@
 
 | ファイル | 内容・出典 | 使用箇所 |
 | --- | --- | --- |
-| `src/assets/campus.jpg` | [京大再現マップの公開配布ページ](https://minecraft-mcworld.com/111488/)のKUMC制作画像 | トップ・作品・OGP |
+| `src/assets/campus-panorama.jpg` | 依頼者が添付したKUMC制作の京大再現画像。不要なメタデータを除去 | トップ全面画像 |
+| `src/assets/campus.jpg` | [京大再現マップの公開配布ページ](https://minecraft-mcworld.com/111488/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/campus-wide.jpg` | KUMC紹介資料に収録された実作品画像。原本はKUMC管理資料で保持 | 共通OGP・再現マップのギャラリー |
 | `src/assets/treasure.jpg` | [京大トレジャーラン](https://minecraft-mcworld.com/144375/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/gunfight.jpg` | [本格マイクラ銃撃戦マップ](https://minecraft-mcworld.com/140001/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/athletic.jpg` | [京大アスレチック](https://minecraft-mcworld.com/138433/)のKUMC制作画像 | 作品・OGP |
 
-すべてMinecraft内の実作品で、人物の顔や相手団体のロゴを転載していません。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは緑のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
+すべてMinecraft内の実作品で、人物の顔や相手団体のロゴを転載していません。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは青のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
 
 ## 公開原稿
 

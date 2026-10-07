@@ -86,12 +86,6 @@ export const schemas = {
       outcome: z.string().min(1),
     }),
   ),
-  news: dated(
-    common.extend({
-      ...refs,
-      category: z.enum(["お知らせ", "作品案内", "活動報告"]),
-    }),
-  ),
 };
 export function isPublished(data, now = Date.now()) {
   return !data.draft && Date.parse(data.publishedAt) <= now;

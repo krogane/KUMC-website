@@ -55,7 +55,7 @@ npm run preview
 
 本番指定でGA4が未設定ならビルドが停止します。解析は本番指定に加え、正規ホスト・利用者の有効な同意がすべてそろった時だけ動きます。プレビューはnoindexです。ドメインを変更する場合は `site` だけでなく検証・CNAME・workflow・テスト・DNSもまとめて更新してください。
 
-メール、SNS、表示件数は `src/data/site.ts`。RSSの接続先・上限は `scripts/feed-core.mjs`。作品・実績・お知らせは `src/content/`。任意HTMLとMDXは使用しません。
+メール、SNS、表示件数は `src/data/site.ts`。RSSの接続先・上限は `scripts/feed-core.mjs`。作品・実績は `src/content/`。任意HTMLとMDXは使用しません。
 
 ## 引き継ぎ
 

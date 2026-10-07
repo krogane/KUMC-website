@@ -1,8 +1,8 @@
 ---
 import Page from '../../layouts/Page.astro';import faq from '../../data/faq.json';import {site,emailLink} from '../../data/site';
 ---
-<Page title="入会方法" label="JOIN US" description="Minecraftの経験は問いません。通年で入会を受け付けています。まずは、あなたの「やってみたい」を聞かせてください。">
-<h2>入会の条件</h2><p>京都大学への所属は条件ではありません。KUMCの目的と会則に同意し、次のいずれかを満たす方が対象です。</p><ul><li><strong>大学生、または社会人1〜5年目</strong>であること。</li><li><strong>中学生〜高校生、または社会人6年目以降</strong>の方は、在籍メンバーと問題なく交流できること。</li></ul><p>入会条件を満たし、目的と会則に同意したうえで、KUMC公式Discordサーバーに加入することで入会となります。</p><div class="callout"><h3>基本的に会費はかかりません。</h3><p>現在、基本的に会費は徴収していません。今後変更する場合は、サークル内で議論のうえ周知します。</p></div><p class="muted">2026年9月23日更新の会則に基づく案内／確認日：2026年10月7日</p>
+<Page title="入会方法" label="JOIN US" description="Minecraftの経験は問いません。通年で入会を受け付けています。">
+<h2>入会の条件</h2><p>京都大学への所属は条件ではありません。KUMCの目的と会則に同意し、次のいずれかを満たす方が対象です。</p><ul><li><strong>大学生、または社会人1〜5年目</strong>であること。</li><li><strong>中学生〜高校生、または社会人6年目以降</strong>の方は、在籍メンバーと問題なく交流できること。</li></ul><p>入会条件を満たし、目的と会則に同意したうえで、KUMC公式Discordサーバーに加入することで入会となります。</p><div class="callout"><h3>基本的に会費はかかりません。</h3><p>現在、基本的に会費は徴収していません。今後変更する場合は、サークル内で議論のうえ周知します。</p></div>
 <h2>参加までの流れ</h2><ol class="step-list"><li><h3>メールかXでご連絡ください</h3><p>入会を希望する旨をお知らせください。参加方法をご案内します。</p></li><li><h3>条件と会則を確認</h3><p>活動や参加環境について、気になることもお気軽にご相談ください。</p></li><li><h3>Discordに参加</h3><p>案内に沿って公式Discordサーバーに加入し、興味のある交流や企画からご参加ください。</p></li></ol>
 <div class="actions">{site.joinUrl?<a class="button" href={site.joinUrl} data-event="join_click" data-placement="join">参加手続きへ進む</a>:<a class="button" href={emailLink('入会について')} data-event="join_click" data-method="email" data-placement="join">メールで入会相談</a>}<a class="button secondary" href={site.x} data-event="join_click" data-method="x" data-placement="join">Xで入会相談</a></div><p class="muted">XのプロフィールからDMでご連絡ください。DMを送れない場合はメールをご利用ください。</p>
 <h2>よくある質問</h2>{faq.map(({q,a})=><details class="faq-item"><summary>{q}</summary><p>{a}</p></details>)}<p>そのほかのご質問は、<a href="/contact/">お問い合わせ</a>からどうぞ。</p></Page>

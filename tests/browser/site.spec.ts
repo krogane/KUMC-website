@@ -16,7 +16,6 @@ const routes = [
   "/contact/",
   "/collaboration/",
   "/news/",
-  "/news/playing-our-maps/",
   "/privacy/",
   "/404.html",
 ];
@@ -142,40 +141,4 @@ test("JS disabled still exposes content, menu, FAQ, links and static feeds", asy
   await page.locator(".faq-item summary").first().click();
   await expect(page.locator(".faq-item").first()).toHaveAttribute("open", "");
   await context.close();
-});
-test("copy success and clipboard failure have truthful feedback", async ({
-  page,
-}) => {
-  await page.goto("/contact/");
-  await page.evaluate(() =>
-    Object.defineProperty(navigator, "clipboard", {
-      value: {
-        writeText: async (text: string) => {
-          (window as any).__copied = text;
-        },
-      },
-      configurable: true,
-    }),
-  );
-  await page.getByRole("button", { name: "アドレスをコピー" }).click();
-  await expect(page.locator("#copy-status")).toHaveText(
-    "メールアドレスをコピーしました。",
-  );
-  expect(await page.evaluate(() => (window as any).__copied)).toBe(
-    "kumcminecraft@gmail.com",
-  );
-  await page.evaluate(() =>
-    Object.defineProperty(navigator, "clipboard", {
-      value: {
-        writeText: async () => {
-          throw Error("denied");
-        },
-      },
-      configurable: true,
-    }),
-  );
-  await page.getByRole("button", { name: "アドレスをコピー" }).click();
-  await expect(page.locator("#copy-status")).toContainText(
-    "コピーできませんでした",
-  );
 });

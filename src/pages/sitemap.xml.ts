@@ -13,7 +13,7 @@ export async function GET() {
     "/collaboration/",
     "/privacy/",
   ];
-  for (const kind of ["works", "achievements", "news"] as const)
+  for (const kind of ["works", "achievements"] as const)
     for (const e of await published(kind))
       paths.push(`/${kind}/${e.data.slug}/`);
   return new Response(

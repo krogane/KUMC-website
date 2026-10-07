@@ -32,10 +32,14 @@ try {
       draft,
       publishedAt,
       checkedAt: "2026-10-07",
-      category: "お知らせ",
+      category: "建築",
+      status: "制作中",
+      edition: ["Java版"],
+      supportedVersions: ["1.21.4"],
+      downloads: [],
     };
     await writeFile(
-      `src/content/news/${slug}.md`,
+      `src/content/works/${slug}.md`,
       "---\n" +
         JSON.stringify(d) +
         '\n---\n\n<script>window.UNSAFE_MARKDOWN_SENTINEL=1</script>\n\n<div onclick="UNSAFE_HANDLER_SENTINEL()">unsafe HTML container</div>\n\nsafe text',
@@ -46,7 +50,7 @@ try {
   for (const [slug] of entries.slice(0, 2))
     assert.ok(!out.includes(slug), "Unpublished fixture leaked");
   const html = await readFile(
-    "dist/news/fixture-markdown-safety/index.html",
+    "dist/works/fixture-markdown-safety/index.html",
     "utf8",
   );
   assert.ok(!html.includes("UNSAFE_MARKDOWN_SENTINEL"));
@@ -57,6 +61,6 @@ try {
   );
 } finally {
   for (const [slug] of entries)
-    await unlink(`src/content/news/${slug}.md`).catch(() => {});
+    await unlink(`src/content/works/${slug}.md`).catch(() => {});
   build();
 }
