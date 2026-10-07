@@ -47,9 +47,13 @@ Lighthouse 13.5.0、Chromium、mobile 390×844、simulated throttling、第三�
 
 1. GitHubの配置先・権限・利用プランを確定し、ソースを配置する（利用者の希望により後から実施）。workflowの実行は未検証。
 2. `kumc-club.net` の取得・DNS管理者・更新費用担当を確認し、GitHub側の所有確認・Custom domain → DNS → HTTPSの順で設定する。
-3. 実GA4測定ID・保持期間・拡張計測等を設定し、本番NetworkとGA4管理画面で受信確認する。
+3. 測定ID `G-6RPY79DMKZ` は反映済み。GA4の保持期間・拡張計測等を設定し、本番NetworkとGA4管理画面で受信確認する。
 4. Search Consoleの所有確認とsitemap登録を実施する。
 5. Xの未ログイン状態での実表示、Firefox・製品版ブラウザ、実機スマートフォンを確認する。
 6. 恒久的な入会先が決まった場合だけ `PUBLIC_JOIN_URL` を設定する。未設定でもメール・Xで案内できる。
 
 DNS、アカウント、GA4実計測、Search Consoleは設定・登録済みとは報告しません。手順は [deployment.md](deployment.md) と [analytics.md](analytics.md) を参照してください。
+
+## GA4測定IDの反映
+
+依頼者提供の `G-6RPY79DMKZ` を `.env`・`.env.example` と本番workflowの既定値へ反映しました。提供IDで本番ビルドが成功し、無条件のGoogle scriptがHTMLへ追加されないことを確認しました。その後previewへ戻し、Chromium／WebKitの解析・同意に関する14件のテストが成功しました。テスト用のIDは通信fixture内だけで使用し、Googleへの実送信・本番受信確認は行っていません。

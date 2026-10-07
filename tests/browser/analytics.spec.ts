@@ -19,7 +19,7 @@ async function fixture(context: BrowserContext) {
               'data-analytics-enabled="true"',
             )
             .replace(
-              'data-measurement-id=""',
+              /data-measurement-id="[^"]*"/,
               'data-measurement-id="G-TEST123456"',
             ),
         );

@@ -1,6 +1,6 @@
 # 京大マインクラフト同好会KUMC 公式サイト
 
-Astroの静的サイトです。正規URLは **https://kumc-club.net/**。GitHub Pages向けの実装を収録しています。GitHub配置先は未決定で、DNS・GA4・Search Consoleの本番設定は未実施です。
+Astroの静的サイトです。正規URLは **https://kumc-club.net/**。GitHub Pages向けの実装を収録しています。GitHub配置先は未決定で、GA4測定IDは設定済みです。DNS・GA4管理画面の設定確認・Search Consoleの本番設定は未実施です。
 
 ## 起動
 
@@ -48,7 +48,7 @@ npm run preview
 | 変数 | 初期値・意味 |
 | --- | --- |
 | `PUBLIC_SITE_URL` | `https://kumc-club.net`。正規ホスト固定 |
-| `PUBLIC_GA_MEASUREMENT_ID` | 空。本番では実際の `G-...` を設定 |
+| `PUBLIC_GA_MEASUREMENT_ID` | `G-6RPY79DMKZ`（依頼者提供の公開識別子）。本番workflowにも設定済み |
 | `PUBLIC_ANALYTICS_ENABLED` | `false`。本番公開工程でのみ `true` |
 | `DEPLOY_TARGET` | `preview`。公開工程でのみ `production` |
 | `PUBLIC_JOIN_URL` | 空。確認済みの恒久的なHTTPS入会先がある場合だけ設定 |

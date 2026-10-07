@@ -6,7 +6,7 @@
 
 - KUMCが継続管理できるGitHub所有者・リポジトリと権限
 - `kumc-club.net` の取得状況、DNS管理権限、更新費用・担当者
-- GA4 Webストリームの測定IDと管理権限
+- GA4 Webストリームの管理権限（測定ID `G-6RPY79DMKZ` は反映済み）
 - Search Consoleドメインプロパティの管理権限
 
 GitHub Freeは公開リポジトリ、非公開リポジトリのPagesはPro／Team等の対応プランが必要です。プランを確認し、既存リポジトリを勝手に公開へ変更しません。公開されるサイトに非公開リポジトリの機密が含まれてよいわけではありません。[GitHub Pagesの利用条件](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)
@@ -25,10 +25,10 @@ GitHub Freeは公開リポジトリ、非公開リポジトリのPagesはPro／T
 | Actions Variable | 値 |
 | --- | --- |
 | `PAGES_ENABLED` | `true`（初回設定完了までは未設定またはfalse） |
-| `PUBLIC_GA_MEASUREMENT_ID` | 実際の `G-...` |
+| `PUBLIC_GA_MEASUREMENT_ID` | 任意。未設定時は提供済みの `G-6RPY79DMKZ` を使用。変更時のみ指定 |
 | `PUBLIC_JOIN_URL` | 未設定で可。確認済みの恒久HTTPS入会先だけ |
 
-GA測定IDは公開識別子です。Googleの秘密鍵・パスワードは一切登録しません。GA未設定の本番ビルドは意図的に失敗します。`PAGES_ENABLED` がfalseのとき公開ジョブはスキップされます。
+GA測定IDは公開識別子です。Googleの秘密鍵・パスワードは一切登録しません。本番の既定測定IDは反映済みです。無効な測定IDの本番ビルドは意図的に失敗します。`PAGES_ENABLED` がfalseのとき公開ジョブはスキップされます。
 
 ## DNS
 
