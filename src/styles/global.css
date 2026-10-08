@@ -869,16 +869,28 @@
     }
     .header-inner {
       min-height: 82px;
+      gap: 12px;
     }
     .wordmark {
       font-size: 33px;
+      flex-shrink: 0;
     }
     .brand-name {
       font-size: 10px;
       max-width: 100px;
+      min-width: 0;
     }
     .brand {
       gap: 10px;
+      min-width: 0;
+      flex-shrink: 1;
+    }
+    .mobile-menu {
+      flex-shrink: 0;
+    }
+    .mobile-menu summary {
+      gap: 8px;
+      white-space: nowrap;
     }
 
     .section {
