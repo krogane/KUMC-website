@@ -7,8 +7,8 @@ const env = {
   ...loadEnv(process.env.NODE_ENV || "production", process.cwd(), ""),
   ...process.env,
 };
-if (env.PUBLIC_SITE_URL !== "https://kumc-club.net")
-  throw new Error("PUBLIC_SITE_URL must be https://kumc-club.net");
+if (env.PUBLIC_SITE_URL !== "https://www.kumc-club.net")
+  throw new Error("PUBLIC_SITE_URL must be https://www.kumc-club.net");
 if (!["preview", "production"].includes(env.DEPLOY_TARGET || "preview"))
   throw new Error("Invalid DEPLOY_TARGET");
 if (env.PUBLIC_JOIN_URL) httpsUrl.parse(env.PUBLIC_JOIN_URL);

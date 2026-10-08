@@ -253,7 +253,7 @@ test("Consent expiration, storage refusal, and host/preview gate fail closed", (
   );
   const c = { choice: "granted", expires: Date.now() + 1000 };
   const conf = {
-    site: "https://kumc-club.net",
+    site: "https://www.kumc-club.net",
     id: "G-ABCDEFG123",
     enabled: true,
   };
@@ -266,8 +266,8 @@ test("Consent expiration, storage refusal, and host/preview gate fail closed", (
 });
 test("Analytics allowlist drops PII, arbitrary URL, and unapproved parameters", () => {
   assert.equal(
-    cleanPageUrl("https://kumc-club.net/join/?email=x#secret"),
-    "https://kumc-club.net/join/",
+    cleanPageUrl("https://www.kumc-club.net/join/?email=x#secret"),
+    "https://www.kumc-club.net/join/",
   );
   assert.equal(cleanPageUrl("javascript:alert(1)"), "");
   assert.deepEqual(

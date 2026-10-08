@@ -1,5 +1,5 @@
 import { test, expect, type BrowserContext } from "@playwright/test";
-const host = "https://kumc-club.net";
+const host = "https://www.kumc-club.net";
 async function fixture(context: BrowserContext) {
   const requests: string[] = [];
   await context.route("https://**/*", async (route) => {
@@ -77,7 +77,7 @@ test("basic consent gates tag loading; one pageview and one event; withdrawal cl
     ),
   ).toBe(1);
   await context.addCookies([
-    { name: "_ga", value: "test", domain: "kumc-club.net", path: "/" },
+    { name: "_ga", value: "test", domain: "www.kumc-club.net", path: "/" },
     {
       name: "_ga_TEST123456",
       value: "test",

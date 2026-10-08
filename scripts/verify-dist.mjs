@@ -39,7 +39,7 @@ for (const file of files) {
   if (!$("title").text() || !$("meta[name=description]").attr("content"))
     throw Error(`${file}: missing metadata`);
   if (
-    !$("link[rel=canonical]").attr("href")?.startsWith("https://kumc-club.net/")
+    !$("link[rel=canonical]").attr("href")?.startsWith("https://www.kumc-club.net/")
   )
     throw Error(`${file}: wrong canonical`);
   const refs = [];
@@ -63,7 +63,7 @@ for (const file of files) {
       throw Error(`${file}: forbidden URL ${ref}`);
     const url = new URL(
       ref,
-      "https://kumc-club.net/" +
+      "https://www.kumc-club.net/" +
         file.replace(/^dist\//, "").replace(/index\.html$/, ""),
     );
     const path = decodeURIComponent(url.pathname);
