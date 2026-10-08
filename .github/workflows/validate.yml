@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      PUBLIC_SITE_URL: https://kumc-club.net
+      PUBLIC_SITE_URL: https://www.kumc-club.net
       PUBLIC_ANALYTICS_ENABLED: 'false'
       PUBLIC_GA_MEASUREMENT_ID: ''
       DEPLOY_TARGET: preview

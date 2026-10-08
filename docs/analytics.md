@@ -5,7 +5,7 @@
 ## GA4の管理画面
 
 1. KUMCが引き継げるGoogleアカウントでGA4プロパティを作成し、管理担当者を追加する。共有パスワードではなく各人の権限を管理する。
-2. タイムゾーンを日本、WebストリームURLを `https://kumc-club.net` とする。測定IDは `G-6RPY79DMKZ` が設定済み。将来変更する場合はActions Variable `PUBLIC_GA_MEASUREMENT_ID` で上書きする。
+2. タイムゾーンを日本、WebストリームURLを `https://www.kumc-club.net` とする。測定IDは `G-6RPY79DMKZ` が設定済み。将来変更する場合はActions Variable `PUBLIC_GA_MEASUREMENT_ID` で上書きする。
 3. **拡張計測を無効**にする。ページビューは実装が1回送信し、外部リンクも独自イベントだけにする。自動イベントとの重複を避ける。
 4. Google Signals、広告連携、User-IDは有効にしない。データ保持でイベントデータの保持期間を **2か月**にする。
 5. 説明欄・引き継ぎ資料に「拒否・ブロッカー等により全訪問者を網羅しない」「クリックは手続き完了数ではない」と記載する。
@@ -42,4 +42,4 @@ DebugViewを使う場合は管理者のテスト端末だけでdebug_modeを一�
 
 ## Search Console
 
-Search Consoleでドメインプロパティ `kumc-club.net` を追加し、提示されたTXTでDNS所有確認を行います。確認用値をこの資料へ書き写さず、DNS管理台帳で管理します。検証後 `https://kumc-club.net/sitemap.xml` を登録し、主要URLの検査で取得・canonical・noindexの状態を確認します。管理担当者を追加し、交代時に不要権限を削除します。現在は未登録です。検索順位やリッチリザルトの表示は保証しません。
+Search Consoleでドメインプロパティ `kumc-club.net` を追加し、提示されたTXTでDNS所有確認を行います。確認用値をこの資料へ書き写さず、DNS管理台帳で管理します。検証後 `https://www.kumc-club.net/sitemap.xml` を登録し、主要URLの検査で取得・canonical・noindexの状態を確認します。管理担当者を追加し、交代時に不要権限を削除します。現在は未登録です。検索順位やリッチリザルトの表示は保証しません。

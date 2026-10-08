@@ -1,6 +1,6 @@
 export const site = {
   name: "京大マインクラフト同好会KUMC",
-  url: import.meta.env.PUBLIC_SITE_URL || "https://kumc-club.net",
+  url: import.meta.env.PUBLIC_SITE_URL || "https://www.kumc-club.net",
   description:
     "Minecraftで遊び、つくり、つながる。京大マインクラフト同好会KUMCの活動、配布作品、入会方法、制作・共同企画の相談をご紹介します。",
   email: "kumcminecraft@gmail.com",

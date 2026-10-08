@@ -1,6 +1,6 @@
 # GitHub Pages・独自ドメインの公開
 
-正規URL：**https://kumc-club.net/**（wwwなし）。2026年10月7日時点で配置先リポジトリは未決定、公開処理は未実行です。SSH・Nginx・常駐サーバーは不要です。
+正規URL：**https://www.kumc-club.net/**（wwwあり）。2026年10月7日時点で配置先リポジトリは未決定、公開処理は未実行です。SSH・Nginx・常駐サーバーは不要です。
 
 ## 管理者が準備するもの
 
@@ -15,7 +15,7 @@ GitHub Freeは公開リポジトリ、非公開リポジトリのPagesはPro／T
 
 1. 秘密情報・内部資料が含まれていないことを確認し、決定したリポジトリへGit履歴をpushする。ブランチ名は `main`。`dist`、`.env`、`.cache`、`.qa` はpushしない。
 2. GitHubの所有者設定からPagesのドメイン所有確認を行う。提示される `_github-pages-challenge-...` TXTをDNSへ登録し、検証完了後も保持する。[所有確認](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
-3. リポジトリ Settings → Pages → Sourceを **GitHub Actions** にし、Custom domainに **kumc-club.net** を保存する。`public/CNAME` だけでは設定完了にならない。
+3. リポジトリ Settings → Pages → Sourceを **GitHub Actions** にし、Custom domainに **www.kumc-club.net** を保存する。`public/CNAME` だけでは設定完了にならない。
 4. 次のDNSを設定する。既存のWeb用競合レコードは用途を確認してから変更する。メール用MX等を消さない。
 5. リポジトリ Settings → Secrets and variables → Actions → Variables に下表を設定する。
 6. Validate pull requestを手動実行し、検証する。Build and deploy Pagesをmainで手動実行する。CIのブラウザ検証まで成功してから本番artifactが作成される。
@@ -41,13 +41,13 @@ GitHub公式で2026年10月7日に確認したapex用IPv4です。設定時に�
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
 
-`www` も利用する場合のみ、`www` のCNAMEを **決定した所有者名.github.io** へ設定します（リポジトリ名は含めない）。このサイトの正規ホストはwwwなしです。GitHub側でwwwから正規ホストへのHTTPS転送を実確認します。ワイルドカードDNSは使いません。AAAAを設定する場合は公式に記載された4件をすべて設定し、古いAAAAが別サーバーを指さないよう確認します。
+`www` のCNAMEを **決定した所有者名.github.io** へ設定します（リポジトリ名は含めない）。このサイトの正規ホストはwwwありです。GitHub側でapexからwwwへのHTTPS転送を実確認します。ワイルドカードDNSは使いません。AAAAを設定する場合は公式に記載された4件をすべて設定し、古いAAAAが別サーバーを指さないよう確認します。
 
 [GitHub公式・カスタムドメイン設定](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 
 ## 公開後チェック
 
-- `https://kumc-club.net/` と全詳細URLへの直接アクセス・更新が成功する
+- `https://www.kumc-club.net/` と全詳細URLへの直接アクセス・更新が成功する
 - HTTP→HTTPS、wwwを設定した場合の正規ホストへの転送
 - 任意の存在しないURLで404が返り、案内・ナビ・画像が表示される
 - canonical、OGP、sitemap、robotsに本番URLがあり、通常ページにnoindexが残らない
