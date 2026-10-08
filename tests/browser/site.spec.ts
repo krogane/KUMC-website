@@ -19,12 +19,10 @@ const routes = [
   "/privacy/",
   "/404.html",
 ];
-test("all routes render, links/images work, no serious accessibility issues", async ({
-  page,
-}) => {
-  const errors: string[] = [];
-  page.on("pageerror", (e) => errors.push(e.message));
-  for (const path of routes) {
+for (const path of routes) {
+  test(`${path} renders, links/images work, no serious accessibility issues`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(path);
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("h1")).toBeVisible();
@@ -52,9 +50,9 @@ test("all routes render, links/images work, no serious accessibility issues", as
       ),
       `${path} accessibility`,
     ).toEqual([]);
-  }
-  expect(errors).toEqual([]);
-});
+    expect(errors).toEqual([]);
+  });
+}
 test("responsive widths and core navigation, focus return, filtering", async ({
   page,
 }) => {
