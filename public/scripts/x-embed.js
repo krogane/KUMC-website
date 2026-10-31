@@ -39,11 +39,12 @@ export function initXEmbed() {
   const message = document.getElementById("x-status");
   const placeholder = document.getElementById("x-placeholder");
   const reserved = timeline.closest(".x-reserved");
-  let loading = false;
+  let generation = 0;
 
   async function load() {
-    if (loading) return;
-    loading = true;
+    const request = ++generation;
+    placeholder.hidden = false;
+    reserved.classList.remove("loaded");
     button.hidden = true;
     button.disabled = true;
     timeline.setAttribute("aria-busy", "true");
@@ -54,33 +55,53 @@ export function initXEmbed() {
     let timer;
     try {
       const frame = await Promise.race([
-        loadSDK().then((twitter) => twitter.widgets.createTimeline(
-          { sourceType: "profile", screenName: timeline.dataset.screenName },
-          mount,
-          { height: 480, dnt: true, theme: "light", chrome: "noheader nofooter" },
-        )),
+        loadSDK().then((twitter) =>
+          twitter.widgets.createTimeline(
+            { sourceType: "profile", screenName: timeline.dataset.screenName },
+            mount,
+            {
+              height: 480,
+              dnt: true,
+              theme:
+                document.documentElement.dataset.theme ||
+                (matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "dark"
+                  : "light"),
+              chrome: "noheader nofooter",
+            },
+          ),
+        ),
         new Promise((_, reject) => {
-          timer = setTimeout(() => reject(new Error("X timeline timeout")), 20000);
+          timer = setTimeout(
+            () => reject(new Error("X timeline timeout")),
+            20000,
+          );
         }),
       ]);
+      if (request !== generation) {
+        mount.remove();
+        return;
+      }
       if (!frame || !mount.contains(frame)) throw new Error("No X timeline");
       placeholder.hidden = true;
       reserved.classList.add("loaded");
       message.textContent = "";
     } catch {
       mount.remove();
+      if (request !== generation) return;
       placeholder.hidden = false;
       reserved.classList.remove("loaded");
-      message.textContent = "投稿を表示できませんでした。再試行するか、下のプロフィールリンクからご覧ください。";
+      message.textContent =
+        "投稿を表示できませんでした。再試行するか、下のプロフィールリンクからご覧ください。";
       button.hidden = false;
       button.disabled = false;
     } finally {
       clearTimeout(timer);
-      timeline.setAttribute("aria-busy", "false");
-      loading = false;
+      if (request === generation) timeline.setAttribute("aria-busy", "false");
     }
   }
 
   button.addEventListener("click", load);
+  document.addEventListener("kumc:themechange", load);
   load();
 }
