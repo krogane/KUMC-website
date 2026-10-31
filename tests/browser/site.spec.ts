@@ -8,6 +8,7 @@ test.beforeEach(async ({ page }) => {
 });
 const routes = [
   "/",
+  "/nf/2026/",
   "/about/",
   "/activities/",
   "/works/",
@@ -75,6 +76,7 @@ for (const colorScheme of ["light", "dark"] as const) {
         await page.setViewportSize({ width, height: 900 });
         for (const path of [
           "/",
+          "/nf/2026/",
           "/works/",
           "/join/",
           "/contact/",

@@ -1,0 +1,184 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Arrow from "../../../components/Arrow.astro";
+import NfDateRange from "../../../components/nf/NfDateRange.astro";
+import NfIcon from "../../../components/nf/NfIcon.astro";
+import NfImage from "../../../components/nf/NfImage.astro";
+import { nf2026 as nf } from "../../../data/nf2026";
+import { site } from "../../../data/site";
+import "../../../styles/nf2026.css";
+---
+<Layout
+  title={nf.pageTitle}
+  description={nf.description}
+  image="/og/nf-2026.jpg"
+  imageAlt="京大トレジャーランで、再現された京都大学の時計台へ滑空するプレイ画面（配布版）"
+  breadcrumbs={[{ name: "NF 2026", url: nf.path }]}
+>
+  <div class="nf nf-page">
+    <div class="nf-opening">
+    <section class="nf-intro nf-pixels" aria-labelledby="nf-title">
+      <div class="container nf-intro-grid">
+        <div class="nf-intro-copy">
+          <h1 id="nf-title">{nf.title}</h1>
+          <p class="nf-subtitle">〜{nf.subtitle}〜</p>
+          <p class="nf-eyebrow">{nf.festival}</p>
+          <p class="nf-introduction">{nf.introduction}</p>
+          <p class="nf-intro-date"><NfDateRange /></p>
+        </div>
+        <NfImage image="campus" eager sizes="(max-width: 900px) calc(100vw - 40px), 728px" />
+      </div>
+    </section>
+
+    <section class="nf-information" aria-labelledby="nf-information-title">
+      <div class="container">
+        <h2 id="nf-information-title" class="nf-small-heading">開催情報</h2>
+        <div class="nf-information-grid">
+          <div class="nf-venue">
+            <NfIcon name="pin" />
+            <div><p>{nf.venue.campus}</p><p class="nf-room">{nf.venue.room}</p></div>
+          </div>
+          <div>
+            <ul class="nf-schedule" aria-label="各日の開催時間">
+              {nf.days.map(day => (
+                <li>
+                  <time datetime={day.date}>{day.label}<span>（{day.weekday}）</span></time>
+                  <p><time datetime={`${day.date}T${day.opens}:00+09:00`}>{day.opens}</time>〜<time datetime={`${day.date}T${day.closes}:00+09:00`}>{day.closes}</time></p>
+                </li>
+              ))}
+            </ul>
+            <p class="nf-timezone">時刻はすべて日本時間</p>
+          </div>
+        </div>
+        <nav class="nf-section-nav" aria-label="NFの企画と会場案内">
+          <a class="nf-button" href="#nf-onsite">会場で楽しめる企画 <Arrow /></a>
+          <a class="nf-button" href="#nf-online">オンライン企画 <Arrow /></a>
+          <a class="nf-button nf-button-outline" href="#nf-access">会場案内 <Arrow /></a>
+        </nav>
+      </div>
+    </section>
+
+    </div>
+
+    <section id="nf-onsite" class="nf-onsite" aria-labelledby="nf-onsite-title">
+      <div class="container nf-onsite-heading"><h2 id="nf-onsite-title" class="nf-heading nf-heading-rule">会場で楽しめる企画</h2></div>
+      <article class="nf-treasure" aria-labelledby="nf-treasure-title">
+        <div class="container">
+          <NfImage image="flight" class="nf-treasure-flight" />
+          <div class="nf-treasure-grid">
+            <div class="nf-copy">
+              <h3 id="nf-treasure-title" class="nf-project-heading nf-heading-bar">{nf.onsite.treasure.title}</h3>
+              <p>{nf.onsite.treasure.description}</p>
+              <p class="nf-condition">{nf.onsite.treasure.conditions}</p>
+              <p class="nf-support">{nf.onsite.treasure.support}</p>
+            </div>
+            <NfImage image="treasures" sizes="(max-width: 900px) calc(100vw - 40px), 612px" />
+          </div>
+        </div>
+      </article>
+
+      <article class="nf-exhibition nf-pale" aria-labelledby="nf-exhibition-title">
+        <div class="container nf-exhibition-grid">
+          <div class="nf-copy">
+            <h3 id="nf-exhibition-title" class="nf-project-heading nf-heading-bar">{nf.onsite.exhibition.title}</h3>
+            <p>{nf.onsite.exhibition.description}</p>
+          </div>
+          <NfImage image="city" sizes="(max-width: 900px) calc(100vw - 40px), 837px" />
+        </div>
+      </article>
+
+      <article class="nf-magazine nf-pixels" aria-labelledby="nf-magazine-title">
+        <div class="container nf-magazine-grid">
+          <NfImage image="cover" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) 480px, 550px" />
+          <div class="nf-copy">
+            <h3 id="nf-magazine-title" class="nf-heading">{nf.onsite.magazine.title}</h3>
+            <p class="nf-magazine-theme">{nf.onsite.magazine.theme}</p>
+            <p>{nf.onsite.magazine.description}</p>
+            <p class="nf-back-issue">{nf.onsite.magazine.backIssue}</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="nf-goods nf-pixels" aria-labelledby="nf-goods-title">
+        <div class="container">
+          <h3 id="nf-goods-title" class="nf-heading">{nf.onsite.goods.title}</h3>
+          <div class="nf-goods-grid">
+            <div class="nf-goods-designs">
+              <NfImage image="clockDesign" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) 44vw, 390px" />
+              <NfImage image="badgeDesign" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) 44vw, 390px" />
+            </div>
+            <div class="nf-copy">
+              <p>{nf.onsite.goods.description}</p>
+              <dl class="nf-prices">
+                {nf.onsite.goods.prices.map(price => (
+                  <div><dt>{price.label}</dt><dd>1回 <strong>{price.yen}</strong>円</dd></div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="nf-coloring nf-pixels" aria-labelledby="nf-coloring-title">
+        <div class="container nf-coloring-grid">
+          <div class="nf-copy">
+            <h3 id="nf-coloring-title" class="nf-project-heading">{nf.onsite.coloring.title}</h3>
+            <p>{nf.onsite.coloring.description}</p>
+          </div>
+          <p class="nf-coloring-condition">{nf.onsite.coloring.conditions}</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="nf-online" class="nf-online" aria-labelledby="nf-online-title">
+      <div class="container">
+        <h2 id="nf-online-title" class="nf-heading">{nf.online.title}</h2>
+        <p class="nf-online-introduction">{nf.online.introduction}</p>
+        <NfImage image="online" class="nf-online-image" />
+        <div class="nf-games">
+          {nf.online.games.map(game => (
+            <article class="nf-copy" aria-labelledby={game.id}>
+              <h3 id={game.id} class="nf-project-heading">{game.title}</h3>
+              <p>{game.description}</p>
+              <ul class="nf-specs">
+                <li><NfIcon name="game" /><span><span>{game.edition}</span><span>{game.players}</span><span>{game.recommendedAge}</span></span></li>
+                <li><NfIcon name="clock" /><span><span>{game.duration}</span>{"period" in game && <span>{game.period}</span>}</span></li>
+                {"credit" in game && <li><NfIcon name="people" /><span>{game.credit}</span></li>}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <div class="nf-online-exhibitions">
+          <article class="nf-copy" aria-labelledby="nf-buildings-title">
+            <NfImage image="campus" caption={false} sizes="(max-width: 900px) calc(100vw - 40px), 640px" />
+            <h3 id="nf-buildings-title" class="nf-project-heading">{nf.online.buildings.title}</h3>
+            <p>{nf.online.buildings.description}</p>
+          </article>
+          <article class="nf-copy" aria-labelledby="nf-collaboration-title">
+            <h3 id="nf-collaboration-title" class="nf-project-heading">{nf.online.collaboration.title}</h3>
+            <p>{nf.online.collaboration.description}</p>
+          </article>
+        </div>
+        <div class="nf-connection">
+          <p>{nf.online.connectionNotice}</p>
+          <a class="nf-text-link" href={site.x}>参加に関する最新情報（X） <Arrow external /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="nf-access" class="nf-access" aria-labelledby="nf-access-title">
+      <div class="container nf-access-grid">
+        <div>
+          <h2 id="nf-access-title" class="nf-small-heading">会場案内</h2>
+          <p class="nf-access-campus">{nf.venue.campus}</p>
+          <p class="nf-room">{nf.venue.room}</p>
+          <p class="nf-access-times">開催日時は<a href="#nf-information-title">開催情報</a>をご確認ください。</p>
+        </div>
+        <div class="nf-access-actions">
+          <a class="nf-button" href={nf.venue.mapUrl}>構内マップで場所を見る <Arrow external /></a>
+          <a class="nf-text-link" href="/contact/">お問い合わせ <Arrow /></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

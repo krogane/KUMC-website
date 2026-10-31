@@ -21,3 +21,7 @@ await sharp("src/assets/campus-wide.jpg")
   .resize(1200, 630, { fit: "cover" })
   .jpeg({ quality: 85, mozjpeg: true })
   .toFile("public/og/default.jpg");
+await sharp("src/assets/nf2026/flight.webp")
+  .resize(1200, 630, { fit: "cover" })
+  .jpeg({ quality: 85, mozjpeg: true })
+  .toFile("public/og/nf-2026.jpg");

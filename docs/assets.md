@@ -12,6 +12,11 @@
 | `src/assets/treasure.jpg` | [京大トレジャーラン](https://minecraft-mcworld.com/144375/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/gunfight.jpg` | [本格マイクラ銃撃戦マップ](https://minecraft-mcworld.com/140001/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/athletic.jpg` | [京大アスレチック](https://minecraft-mcworld.com/138433/)のKUMC制作画像 | 作品・OGP |
+| `src/assets/nf2026/flight.webp`・`treasures.webp` | 確認済みの京大トレジャーラン配布版のプレイ画像 | NF告知・現地企画。配布版と明記。flightからNF専用OGPを生成 |
+| `src/assets/nf2026/city.webp` | KUMCの企画紹介素材に含まれるメンバーの建築作品 | NF告知・建築展示 |
+| `src/assets/nf2026/cover.webp` | KU匠 Vol.3の確認済み表紙原稿の表面 | NF告知・会報誌紹介 |
+| `src/assets/nf2026/clock-design.webp`・`badge-design.webp` | 時計台・KUMCの確認済み入稿デザイン | NF告知・ガチャガチャ。完成品写真ではなくデザインとして表示 |
+| `src/assets/nf2026/online.webp` | KUMCのオンライン企画紹介素材 | NFオンライン紹介。特定ゲームの画面とは表記しない |
 
 初版の上記6点は、Minecraft内の実作品画像です。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは青のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
 
@@ -45,3 +50,5 @@
 | `campus-gate.jpg` / `campus-bicycles.jpg` | [再現マップ配布ページ](https://minecraft-mcworld.com/112539/)の画像。統合版では省略される文字・自転車を含むため、Java版表示と明記 |
 
 公開Notionの基点：[活動内容](https://kumc-club.notion.site/330b66811ed780b3a6e7c7f326747bdf)。画像の近くに対象・年・内容が分かるキャプションを付けています。会報誌の内部原稿・誌面全体は転載していません。
+
+NF 2026の掲載原稿・上記素材は、依頼者が承認した特設ページ実装計画に対応します。原資料の全文・内部共有URL・ID・運営担当者情報は収録しません。画像はメタデータを除去し、長辺相当の表示幅に合わせてWebP化。Astroが表示幅別の派生画像を生成します。生成されたデザイン検討画像をサイトの素材に使用していません。

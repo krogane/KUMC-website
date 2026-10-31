@@ -3,6 +3,7 @@ import { site } from "../data/site";
 export async function GET() {
   const paths = [
     "/",
+    "/nf/2026/",
     "/about/",
     "/activities/",
     "/works/",

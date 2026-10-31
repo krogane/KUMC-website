@@ -1,0 +1,6 @@
+---
+import { nf2026 } from "../../data/nf2026";
+const first = nf2026.days[0];
+const last = nf2026.days[nf2026.days.length - 1];
+---
+<span class="nf-date-range"><time datetime={first.date}>{nf2026.year}.{first.label}<span class="nf-weekday">（{first.weekday}）</span></time><span aria-hidden="true"> – </span><span class="nf-sr-only">から</span><time datetime={last.date}>{last.label}<span class="nf-weekday">（{last.weekday}）</span></time></span>
