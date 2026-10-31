@@ -1,3 +1,4 @@
+import { initXEmbed } from "./x-embed.js";
 import {
   CONSENT_KEY,
   readConsent,
@@ -204,54 +205,7 @@ if (filters) {
       `${count}件の作品を表示しています。`;
   });
 }
-const xButton = document.getElementById("load-x");
-if (xButton) {
-  xButton.hidden = false;
-  xButton.addEventListener(
-    "click",
-    () => {
-      xButton.disabled = true;
-      const message = document.getElementById("x-status");
-      message.textContent = "Xから読み込んでいます…";
-      const fallback = () => {
-        message.textContent =
-          "投稿を表示できませんでした。下のプロフィールリンクからご覧ください。";
-      };
-      const timer = setTimeout(fallback, 15000);
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = "https://platform.twitter.com/widgets.js";
-      script.onerror = () => {
-        clearTimeout(timer);
-        fallback();
-      };
-      script.onload = async () => {
-        try {
-          if (!window.twttr?.widgets) throw Error("unavailable");
-          const frame = await window.twttr.widgets.createTimeline(
-            { sourceType: "profile", screenName: "KUMC_X" },
-            document.getElementById("x-timeline"),
-            {
-              height: 480,
-              dnt: true,
-              theme: "light",
-              chrome: "noheader nofooter",
-            },
-          );
-          clearTimeout(timer);
-          if (!frame) throw Error("no frame");
-          document.getElementById("x-placeholder").hidden = true;
-          document.querySelector(".x-reserved").classList.add("loaded");
-        } catch {
-          clearTimeout(timer);
-          fallback();
-        }
-      };
-      document.head.append(script);
-    },
-    { once: true },
-  );
-}
+initXEmbed();
 
 for (const label of document.querySelectorAll("[data-feed-stale]"))
   if (

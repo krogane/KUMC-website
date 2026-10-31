@@ -1,5 +1,8 @@
 import { test, expect, type BrowserContext } from "@playwright/test";
 const host = "https://www.kumc-club.net";
+test.afterEach(async ({ context }) => {
+  await context.unrouteAll({ behavior: "wait" });
+});
 async function fixture(context: BrowserContext) {
   const requests: string[] = [];
   await context.route("https://**/*", async (route) => {
@@ -30,7 +33,7 @@ async function fixture(context: BrowserContext) {
       });
       return;
     }
-    requests.push(url.href);
+    if (!/\.(twitter|twimg|x)\.com$/.test(url.hostname)) requests.push(url.href);
     if (url.hostname === "www.googletagmanager.com") {
       await route.fulfill({
         contentType: "application/javascript",
@@ -132,7 +135,7 @@ test("expired persisted consent is not accepted", async ({ context, page }) => {
   await expect(page.locator("#consent-banner")).toBeVisible();
   expect(requests).toEqual([]);
 });
-test("CSP blocks unmanaged inline scripts and X choice is independent from GA consent", async ({
+test("CSP blocks unmanaged inline scripts and automatic X loading is independent from GA consent", async ({
   context,
   page,
 }) => {
@@ -147,7 +150,6 @@ test("CSP blocks unmanaged inline scripts and X choice is independent from GA co
   expect(
     await page.evaluate(() => (window as any).__unsafeInlineExecuted),
   ).toBeUndefined();
-  await page.getByRole("button", { name: "Xの投稿を表示" }).click();
   await expect(page.locator("#x-status")).toContainText("表示できませんでした");
   expect(requests.some((x) => x.includes("googletagmanager"))).toBe(false);
 });
