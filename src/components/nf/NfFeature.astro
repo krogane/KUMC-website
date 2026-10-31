@@ -1,0 +1,26 @@
+---
+import "../../styles/nf2026.css";
+import { nf2026 as nf } from "../../data/nf2026";
+import Arrow from "../Arrow.astro";
+import NfImage from "./NfImage.astro";
+import NfDateRange from "./NfDateRange.astro";
+---
+<section class="nf nf-feature nf-pixels" aria-labelledby="nf-feature-title">
+  <div class="container nf-feature-grid">
+    <div class="nf-feature-copy">
+      <h2 id="nf-feature-title"><span class="nf-feature-year">NF {nf.year}</span><span>{nf.title}</span></h2>
+      <div class="nf-feature-facts">
+        <p class="nf-feature-date"><NfDateRange /></p>
+        <p class="nf-feature-venue">{nf.venue.shortCampus}<br />{nf.venue.room}</p>
+      </div>
+      <p class="nf-feature-description">{nf.homeDescription}</p>
+      <a class="nf-button nf-button-white" href={nf.path}>NF特設ページを見る <Arrow /></a>
+    </div>
+    <div class="nf-feature-collage">
+      <NfImage image="flight" class="nf-feature-flight" caption="京大トレジャーラン（配布版）" sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1440px) 64vw, 922px" />
+      <NfImage image="cover" class="nf-feature-thumbnail nf-feature-cover" caption="KU匠 Vol.3" sizes="(max-width: 900px) 30vw, 240px" />
+      <NfImage image="city" class="nf-feature-thumbnail" caption="建築展示" sizes="(max-width: 900px) 30vw, 240px" />
+      <NfImage image="badgeDesign" class="nf-feature-thumbnail nf-feature-badge" caption="グッズのデザイン" sizes="(max-width: 900px) 30vw, 240px" />
+    </div>
+  </div>
+</section>

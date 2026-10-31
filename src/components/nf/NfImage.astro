@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import { nfImages, type NfImageName } from "../../lib/nf-images";
+
+interface Props {
+  image: NfImageName;
+  class?: string;
+  sizes?: string;
+  eager?: boolean;
+  caption?: string | false;
+}
+const { image, class: className, sizes = "(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 48px), (max-width: 1440px) calc(100vw - 80px), 1360px", eager = false, caption } = Astro.props;
+const asset = nfImages[image];
+const widths = [...new Set([400, 640, 960, 1200, asset.src.width].filter(width => width <= asset.src.width))].sort((a, b) => a - b);
+---
+<figure class:list={["nf-media", className]}>
+  <Image src={asset.src} alt={asset.alt} widths={widths} sizes={sizes} format="webp" quality={85} loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : "auto"} />
+  {caption !== false && <figcaption>{caption ?? asset.caption}</figcaption>}
+</figure>

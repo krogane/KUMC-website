@@ -1,0 +1,10 @@
+---
+interface Props { name: "pin" | "clock" | "game" | "people" }
+const { name } = Astro.props;
+---
+<svg class="nf-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === "pin" && <><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></>}
+  {name === "clock" && <><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></>}
+  {name === "game" && <><path d="M7 7h10c2 0 3 2 3.5 5l.5 5c.2 2-2 3-3.5 1L15 15H9l-2.5 3C5 20 2.8 19 3 17l.5-5C4 9 5 7 7 7Z"/><path d="M6 11h5M8.5 8.5v5M16 10h.01M18 12h.01"/></>}
+  {name === "people" && <><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3ZM17 4a3 3 0 0 1 0 6M18 13a5 5 0 0 1 3 4v3"/></>}
+</svg>
