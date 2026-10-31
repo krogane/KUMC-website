@@ -42,6 +42,7 @@
 }
 @layer base {
   :root {
+    color-scheme: light;
     --bg: #f7f9fd;
     --paper: #fff;
     --ink: #202d45;
@@ -49,8 +50,108 @@
     --brand: #48689e;
     --blue: #405f95;
     --line: #dbe2ee;
+    --button-bg: #48689e;
+    --button-blue: #405f95;
+    --button-ink: #fff;
+    --button-hover: #334e7e;
+    --control-line: #74839b;
+    --focus: #405f95;
+    --selection: #dbe7ff;
+    --panel: #edf2fb;
+    --embed-bg: #f0f4fa;
+    --invitation-first: #eaf0fc;
+    --invitation-second: #f0f4fc;
+    --logo: #5d7fbd;
+    --footer-bg: #1f3152;
+    --hero-bg: #567095;
+    --shadow: #202d4522;
+    --menu-shadow: #1f315215;
     --radius: 8px;
     --max: 1200px;
+  }
+  /* Without JavaScript, use the device setting. Explicit choices take precedence. */
+  @media screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      --bg: #181818;
+      --paper: #242424;
+      --ink: #e6edf9;
+      --muted: #b7c5db;
+      --brand: #99baff;
+      --blue: #adc9ff;
+      --line: #424242;
+      --button-bg: #99baff;
+      --button-blue: #adc9ff;
+      --button-ink: #181818;
+      --button-hover: #c5d8ff;
+      --control-line: #858585;
+      --focus: #b5ceff;
+      --selection: #354f79;
+      --panel: #303030;
+      --embed-bg: #282828;
+      --invitation-first: #282828;
+      --invitation-second: #303030;
+      --logo: #99baff;
+      --footer-bg: #121212;
+      --hero-bg: #242424;
+      --shadow: #00000055;
+      --menu-shadow: #00000055;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #181818;
+    --paper: #242424;
+    --ink: #e6edf9;
+    --muted: #b7c5db;
+    --brand: #99baff;
+    --blue: #adc9ff;
+    --line: #424242;
+    --button-bg: #99baff;
+    --button-blue: #adc9ff;
+    --button-ink: #181818;
+    --button-hover: #c5d8ff;
+    --control-line: #858585;
+    --focus: #b5ceff;
+    --selection: #354f79;
+    --panel: #303030;
+    --embed-bg: #282828;
+    --invitation-first: #282828;
+    --invitation-second: #303030;
+    --logo: #99baff;
+    --footer-bg: #121212;
+    --hero-bg: #242424;
+    --shadow: #00000055;
+    --menu-shadow: #00000055;
+  }
+  @media print {
+    :root,
+    :root[data-theme] {
+      color-scheme: light;
+      --bg: #fff;
+      --paper: #fff;
+      --ink: #202d45;
+      --muted: #526078;
+      --brand: #48689e;
+      --blue: #405f95;
+      --line: #dbe2ee;
+      --button-bg: #48689e;
+      --button-blue: #405f95;
+      --button-ink: #fff;
+      --button-hover: #334e7e;
+      --control-line: #74839b;
+      --focus: #405f95;
+      --selection: #dbe7ff;
+      --panel: #edf2fb;
+      --embed-bg: #f0f4fa;
+      --invitation-first: #eaf0fc;
+      --invitation-second: #f0f4fc;
+      --logo: #5d7fbd;
+      --footer-bg: #1f3152;
+      --hero-bg: #567095;
+      --shadow: #202d4522;
+      --menu-shadow: #1f315215;
+    }
   }
   html {
     scroll-behavior: smooth;
@@ -73,7 +174,8 @@
   a:hover {
     color: var(--brand);
   }
-  button {
+  button,
+  select {
     color: inherit;
   }
   h1,
@@ -97,18 +199,21 @@
   }
   button,
   a,
-  summary {
+  summary,
+  select {
     touch-action: manipulation;
   }
   a:focus-visible,
   button:focus-visible,
-  summary:focus-visible {
-    outline: 3px solid #405f95;
+  summary:focus-visible,
+  select:focus-visible {
+    outline: 3px solid var(--focus);
     outline-offset: 5px;
   }
-  button {
-    border: 1px solid var(--line);
-    background: #fff;
+  button,
+  select {
+    border: 1px solid var(--control-line);
+    background: var(--paper);
     border-radius: var(--radius);
     min-height: 44px;
     padding: 8px 16px;
@@ -118,7 +223,8 @@
     opacity: 0.65;
   }
   ::selection {
-    background: #dbe7ff;
+    background: var(--selection);
+    color: var(--ink);
   }
   main:focus {
     outline: none;
@@ -133,7 +239,7 @@
     padding-block: 80px;
   }
   .section.white {
-    background: #fff;
+    background: var(--paper);
   }
   .section-head {
     display: flex;
@@ -169,10 +275,10 @@
     gap: 24px;
     min-height: 50px;
     padding: 12px 24px;
-    background: var(--brand);
-    border: 1px solid var(--brand);
+    background: var(--button-bg);
+    border: 1px solid var(--button-bg);
     border-radius: 6px;
-    color: #fff;
+    color: var(--button-ink);
     font-weight: 650;
     text-decoration: none;
     font-size: 16px;
@@ -181,8 +287,8 @@
       transform 0.18s;
   }
   .button:hover {
-    background: #334e7e;
-    color: #fff;
+    background: var(--button-hover);
+    color: var(--button-ink);
   }
   .button.secondary {
     background: transparent;
@@ -190,11 +296,11 @@
     border-color: var(--blue);
   }
   .button.secondary:hover {
-    background: #f0f4fc;
+    background: var(--invitation-second);
   }
   .button.blue {
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--button-blue);
+    border-color: var(--button-blue);
   }
   .actions {
     display: flex;
@@ -207,7 +313,7 @@
     top: -100px;
     left: 16px;
     z-index: 100;
-    background: #fff;
+    background: var(--paper);
     padding: 16px;
   }
   .skip-link:focus {
@@ -221,7 +327,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 26px;
+    gap: 20px;
     min-height: 98px;
   }
   .brand {
@@ -248,7 +354,7 @@
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 16px;
   }
   .desktop-nav a {
     font-size: 14px;
@@ -267,6 +373,39 @@
     border: 1px solid var(--line);
     padding: 9px 14px;
     border-radius: 5px;
+  }
+  .theme-control {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--muted);
+  }
+  .theme-options {
+    display: flex;
+    gap: 4px;
+  }
+  .theme-options button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: var(--muted);
+    background: transparent;
+    border-color: transparent;
+    border-radius: 6px;
+  }
+  .theme-options button:hover {
+    background: var(--paper);
+    color: var(--blue);
+  }
+  .theme-options button[aria-pressed="true"] {
+    background: var(--panel);
+    border-color: var(--blue);
+    color: var(--blue);
   }
   .mobile-menu {
     display: none;
@@ -455,8 +594,8 @@
   .x-reserved {
     height: 490px;
     overflow: auto;
-    background: #f0f4fa;
-    border: 1px solid #dbe2ee;
+    background: var(--embed-bg);
+    border: 1px solid var(--line);
     border-radius: 8px;
     display: grid;
     align-content: center;
@@ -487,7 +626,11 @@
     font-size: 12px;
   }
   .invitation {
-    background: linear-gradient(90deg, #eaf0fc 50%, #f0f4fc 50%);
+    background: linear-gradient(
+      90deg,
+      var(--invitation-first) 50%,
+      var(--invitation-second) 50%
+    );
     border-top: 2px solid var(--line);
   }
   .invitation-grid {
@@ -507,7 +650,8 @@
     margin: 16px 0 24px;
   }
   .site-footer {
-    background: #1f3152;
+    background: var(--footer-bg);
+    --focus: #b5ceff;
     color: #e6edf9;
     padding: 64px 0 24px;
   }
@@ -618,7 +762,7 @@
     color: var(--blue);
   }
   .prose .button {
-    color: #fff;
+    color: var(--button-ink);
   }
   .prose .button.secondary {
     color: var(--blue);
@@ -642,7 +786,7 @@
     margin: 0;
   }
   .callout {
-    background: #edf2fb;
+    background: var(--panel);
     border-left: 3px solid var(--brand);
     padding: 24px;
     margin: 28px 0;
@@ -695,7 +839,7 @@
   }
   .contact-panel {
     border-top: 3px solid var(--brand);
-    background: #fff;
+    background: var(--paper);
     padding: 32px;
     border-radius: 0 0 8px 8px;
   }
@@ -719,9 +863,9 @@
     margin-bottom: 32px;
   }
   .filter-bar button[aria-pressed="true"] {
-    background: var(--brand);
-    color: #fff;
-    border-color: var(--brand);
+    background: var(--button-bg);
+    color: var(--button-ink);
+    border-color: var(--button-bg);
   }
   .works-grid.large {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -772,9 +916,9 @@
     transform: translateX(-50%);
     width: min(1000px, calc(100% - 32px));
     z-index: 50;
-    background: #fff;
+    background: var(--paper);
     border: 1px solid var(--line);
-    box-shadow: 0 8px 40px #202d4522;
+    box-shadow: 0 8px 40px var(--shadow);
     border-radius: 10px;
     padding: 24px;
     display: flex;
@@ -830,13 +974,21 @@
       top: 60px;
       z-index: 30;
       width: 280px;
-      background: #fff;
+      max-height: calc(100dvh - 120px);
+      overflow-y: auto;
+      background: var(--paper);
       padding: 16px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 10px 30px #1f315215;
+      box-shadow: 0 10px 30px var(--menu-shadow);
       display: flex;
       flex-direction: column;
+    }
+    .mobile-menu .theme-control {
+      margin: 8px 12px 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      gap: 8px;
     }
     .mobile-menu nav a {
       padding: 10px 12px;
@@ -844,7 +996,7 @@
       text-decoration: none;
     }
     .mobile-menu nav a[aria-current] {
-      background: #edf2fb;
+      background: var(--panel);
     }
 
     .activity-grid {
@@ -948,10 +1100,10 @@
     .invitation-grid > div,
     .invitation-grid > div:first-child {
       padding: 44px 20px;
-      background: #eaf0fc;
+      background: var(--invitation-first);
     }
     .invitation-grid > div:nth-child(2) {
-      background: #f0f4fc;
+      background: var(--invitation-second);
     }
     .invitation h2 {
       font-size: 25px;
@@ -1077,7 +1229,7 @@
 
 @layer components {
   .wordmark {
-    color: #5d7fbd;
+    color: var(--logo);
   }
   .hero {
     position: relative;
@@ -1085,7 +1237,7 @@
     width: 100%;
     height: clamp(560px, 56.25vw, 880px);
     overflow: hidden;
-    background: #567095;
+    background: var(--hero-bg);
   }
   .hero-image {
     position: absolute;
@@ -1109,7 +1261,7 @@
     font-weight: 800;
     letter-spacing: -0.025em;
     line-height: 1.5;
-    color: #405f95;
+    color: var(--blue);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1118,7 +1270,7 @@
     max-width: 100%;
   }
   .hero h1 span {
-    background: #fff;
+    background: var(--paper);
     padding: 0.08em 0.3em;
     max-width: 100%;
     box-decoration-break: clone;
@@ -1129,7 +1281,7 @@
     gap: 12px;
   }
   .hero .button.secondary {
-    background: #fff;
+    background: var(--paper);
   }
   .page-lead-wide {
     max-width: none;
