@@ -95,7 +95,7 @@ test("responsive widths and core navigation, focus return, filtering", async ({
   await page.reload();
   await expect(page.locator("h1")).toHaveText("京大再現マップ");
 });
-test("preview never contacts Google or X until the explicit X action; failure preserves profile link", async ({
+test("preview automatically loads X without Google; failure preserves retry and profile link", async ({
   page,
 }) => {
   const external: string[] = [];
@@ -107,8 +107,7 @@ test("preview never contacts Google or X until the explicit X action; failure pr
   await page.locator("[data-consent-open]").click();
   await page.getByRole("button", { name: "解析を許可", exact: true }).click();
   await page.waitForTimeout(250);
-  expect(external).toEqual([]);
-  await page.getByRole("button", { name: "Xの投稿を表示" }).click();
+  expect(external.some((x) => /google/.test(x))).toBe(false);
   await expect(page.locator("#x-status")).toContainText("表示できませんでした");
   expect(
     external.some((x) => x.includes("platform.twitter.com/widgets.js")),
@@ -116,6 +115,9 @@ test("preview never contacts Google or X until the explicit X action; failure pr
   await expect(
     page.getByRole("link", { name: "プロフィールを見る" }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "Xの投稿を再読み込み" }).click();
+  await expect(page.locator("#x-status")).toContainText("表示できませんでした");
+  expect(external.filter((x) => x.includes("platform.twitter.com/widgets.js"))).toHaveLength(2);
   expect(external.some((x) => /google/.test(x))).toBe(false);
 });
 test("JS disabled still exposes content, menu, FAQ, links and static feeds", async ({
