@@ -2,6 +2,11 @@ import sharp from "sharp";
 import { mkdir } from "node:fs/promises";
 await mkdir("public/og", { recursive: true });
 for (const name of [
+  "nf-crowd",
+  "nf-2024",
+  "ku-takumi",
+  "azabu",
+
   "campus",
   "campus-wide",
   "treasure",
