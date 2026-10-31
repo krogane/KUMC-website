@@ -1,5 +1,42 @@
 ---
-import Page from '../../layouts/Page.astro';import Records from '../../components/Records.astro';import {published} from '../../lib/content';
-const all=(await published('achievements')).sort((a,b)=>b.data.eventDate.localeCompare(a.data.eventDate));const years=[...new Set(all.map(a=>a.data.eventDate.slice(0,4)))];
+import Page from '../../layouts/Page.astro';
+import Photo from '../../components/Photo.astro';
+import Arrow from '../../components/Arrow.astro';
+import { dateLabel, published } from '../../lib/content';
+import '../../styles/content-pages.css';
+const all = (await published('achievements')).sort((a, b) => b.data.eventDate.localeCompare(a.data.eventDate));
+const years = [...new Set(all.map(a => a.data.eventDate.slice(0, 4)))];
 ---
-<Page title="活動実績" label="ACTIVITY LOG" description="つくったものを、誰かに届ける。展示・体験企画や共同制作など、これまでの活動を記録しています。" wide>{years.map(year=><section class="year-group"><h2>{year}</h2><Records entries={all.filter(a=>a.data.eventDate.startsWith(year))}/></section>)}<a class="text-link" href="/collaboration/">制作・共同企画について相談する →</a></Page>
+<Page title="活動実績" label="ACTIVITY LOG" description="11月祭の展示・ゲーム体験、教育ワークショップ、外部団体との合同企画、配信向けワールド制作。実施した内容とKUMCの担当を、年度ごとに紹介します。" wide>
+  <nav class="content-nav" aria-label="活動実績の目次">{years.map(year => <a href={`#year-${year}`}>{year}年</a>)}<a href="#rta">エンドラRTA軍団とのコラボ</a></nav>
+  {years.map(year => <section id={`year-${year}`} class="year-group">
+    <h2>{year}年</h2>
+    {all.filter(a => a.data.eventDate.startsWith(year)).map(({ data: d }) => <article id={d.slug === 'minecraft-exchange-2026' ? 'exchange' : d.slug} class:list={['event-story', { 'no-photo': !d.cover }]}>
+      <div>
+        {d.periodLabel ? <p class="muted">{d.periodLabel}</p> : <time datetime={d.eventDate}>{dateLabel(d.eventDate)}{d.eventEndDate && `〜${dateLabel(d.eventEndDate)}`}</time>}
+        <h3>{d.title}</h3>
+        <p>{d.summary}</p>
+        <dl class="event-facts">
+          {d.location && <><dt>会場・形式</dt><dd>{d.location}</dd></>}
+          <dt>KUMCの担当</dt><dd>{d.role}</dd>
+        </dl>
+        <a class="text-link" href={`/achievements/${d.slug}/`}>実施内容を詳しく見る <Arrow /></a>
+      </div>
+      {d.cover && <Photo image={d.cover} alt={d.coverAlt || d.title} contain={d.cover === 'ku-takumi'} />}
+    </article>)}
+  </section>)}
+
+  <section id="rta" class="content-section content-split content-copy">
+    <div>
+      <h2>エンドラRTA軍団とのコラボ</h2>
+      <p>2025年には動画企画で「謎解きBINGO」とKUMCの自作ミニゲームを一緒にプレイしました。11月祭では、会場でのRTA実演と実況解説にも参加していただきました。</p>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=fS6xDlL5GbU">謎解きBINGOのコラボ動画</a>：クイズで示されたMinecraft内の課題を解き、KUMCとエンドラRTA軍団が3対3で対戦。</li>
+        <li><a href="https://www.youtube.com/watch?v=t1CfsbRzK9I">自作ミニゲームのコラボ動画</a>：本格マイクラ銃撃戦と京大トレジャーランをプレイ。</li>
+      </ul>
+      <a class="text-link" href="https://kumc.hatenablog.com/entry/2025/11/01/193054">謎解きBINGOの問題・解説 <Arrow external /></a>
+    </div>
+    <Photo image="bingo" alt="エンドラRTA軍団とのコラボで使用した謎解きBINGOのカード" contain />
+  </section>
+  <div class="actions"><a class="button secondary" href="/collaboration/">制作・共同企画について相談する <Arrow /></a></div>
+</Page>

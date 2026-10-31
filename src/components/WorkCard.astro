@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { images } from '../lib/images';
 import Arrow from './Arrow.astro';
 import type { CollectionEntry } from 'astro:content';
-interface Props {work:CollectionEntry<'works'>;heading?:'h2'|'h3';hidePublished?:boolean}
-const {work,heading:Heading='h3',hidePublished=false}=Astro.props;const d=work.data;
+interface Props {work:CollectionEntry<'works'>;heading?:'h2'|'h3';hidePublished?:boolean;showDetails?:boolean}
+const {work,heading:Heading='h3',hidePublished=false,showDetails=false}=Astro.props;const d=work.data;
 ---
-<article class="work-card" data-category={d.category}><a href={`/works/${d.slug}/`} class="work-link">{d.cover&&<Image src={images[d.cover]} alt={d.coverAlt||d.title} widths={[320,480,640]} sizes="(max-width: 650px) calc(100vw - 40px), (max-width: 1000px) 45vw, 380px" format="webp" loading="lazy" class="work-image"/>}<div class="work-meta"><span>{d.category}</span>{(!hidePublished||d.status!=='公開中')&&<span>{d.status}</span>}</div><Heading class="work-title">{d.title}<Arrow/></Heading><p>{d.summary}</p></a></article>
+<article class="work-card" data-category={d.category}><a href={`/works/${d.slug}/`} class="work-link">{d.cover&&<Image src={images[d.cover]} alt={d.coverAlt||d.title} widths={[320,480,640,960]} sizes={showDetails ? '(max-width: 767px) calc(100vw - 40px), (max-width: 1264px) 46vw, 584px' : '(max-width: 767px) calc(100vw - 40px), 380px'} format="webp" loading="lazy" class="work-image"/>}<div class="work-meta"><span>{d.category}</span>{(!hidePublished||d.status!=='公開中')&&<span>{d.status}</span>}</div><Heading class="work-title">{d.title}<Arrow/></Heading><p>{d.summary}</p></a>{showDetails && <dl class="work-facts"><dt>対応版</dt><dd>{d.edition.join(' / ')}</dd><dt>バージョン</dt><dd>{d.supportedVersions.join(' / ')}</dd>{d.playMode && <><dt>遊び方</dt><dd>{d.playMode}</dd></>}{d.highlights.length > 0 && <><dt>特徴</dt><dd>{d.highlights.join('・')}</dd></>}</dl>}</article>

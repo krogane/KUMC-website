@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import { images } from '../lib/images';
+interface Props {
+  image: keyof typeof images;
+  alt: string;
+  caption?: string;
+  eager?: boolean;
+  contain?: boolean;
+}
+const { image, alt, caption = alt, eager = false, contain = false } = Astro.props;
+---
+<figure class:list={['content-photo', { 'photo-contain': contain }]}>
+  <Image src={images[image]} alt={alt} widths={[360, 640, 960, 1280]} sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1264px) 48vw, 600px" format="webp" loading={eager ? 'eager' : 'lazy'} />
+  <figcaption>{caption}</figcaption>
+</figure>

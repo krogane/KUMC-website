@@ -13,7 +13,7 @@
 | `src/assets/gunfight.jpg` | [本格マイクラ銃撃戦マップ](https://minecraft-mcworld.com/140001/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/athletic.jpg` | [京大アスレチック](https://minecraft-mcworld.com/138433/)のKUMC制作画像 | 作品・OGP |
 
-すべてMinecraft内の実作品で、人物の顔や相手団体のロゴを転載していません。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは青のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
+初版の上記6点は、Minecraft内の実作品画像です。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは青のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
 
 ## 公開原稿
 
@@ -24,3 +24,24 @@
 - 入会条件：閲覧指定されたKUMC運営資料の現行会則（2026年9月23日更新）を確認し、公開向けに要約。大学生・社会人1〜5年目、中高生・社会人6年目以降の条件分岐を保持。
 
 会員数や固定活動時刻は掲載せず、古い募集リンクも使いません。入会URLが未確定の間はメール・Xへ案内します。資料にある予定を実績に変えていません。外部RSSは短い要約のみ、画像・全文の自動転載なしです。
+
+
+## 2026年11月1日の追加画像
+
+依頼された活動・作品・実績ページの再構成に伴い、KUMCが公開済みの画像15点を追加しました。生成画像・ストック画像は使用していません。Notionの期限付き画像URLに依存せず、メタデータを除去してローカルJPEGに保存し、Astroで表示サイズ別WebPを生成します。
+
+| ファイル | 公開出典・内容 |
+| --- | --- |
+| `meeting.jpg` | 指定の公開Notion「オンライン例会」。KUMCの銃撃戦プレイ画面 |
+| `azabu.jpg` | 同「外部交流」。麻布Minecraft同好会とトレジャーランを遊んだ画面 |
+| `nf-crowd.jpg` / `nf-2024.jpg` | 同「11月祭への出展」「イベント出展」の既公開会場写真。2025年と2024年を区別し、元画像の加工を維持 |
+| `ku-takumi.jpg` | 同「教育支援事業の運営・制作」。公開済みの会報誌vol.2表紙のみ |
+| `hypixel.jpg` / `bedwars.jpg` / `skyblock.jpg` | 同「Hypixel」に掲載されたKUMCブログの画像。Hypixelのゲーム画面として説明し、KUMC制作作品として扱わない |
+| `bingo.jpg` | [謎解きBINGOの公式解説](https://kumc.hatenablog.com/entry/2025/11/01/193054)の問題カード |
+| `blockhide.jpg` | [BLOCK HIDEの公式紹介](https://kumc.hatenablog.com/entry/2025/05/20/160000)のステージ |
+| `treasure-play.jpg` | [トレジャーラン配布ページ](https://minecraft-mcworld.com/144375/)の開始地点 |
+| `gunfight-lobby.jpg` | [銃撃戦配布ページ](https://minecraft-mcworld.com/140001/)の設定ロビー |
+| `athletic-course.jpg` | [アスレチック配布ページ](https://minecraft-mcworld.com/138433/)のキャンパス俯瞰 |
+| `campus-gate.jpg` / `campus-bicycles.jpg` | [再現マップ配布ページ](https://minecraft-mcworld.com/112539/)の画像。統合版では省略される文字・自転車を含むため、Java版表示と明記 |
+
+公開Notionの基点：[活動内容](https://kumc-club.notion.site/330b66811ed780b3a6e7c7f326747bdf)。画像の近くに対象・年・内容が分かるキャプションを付けています。会報誌の内部原稿・誌面全体は転載していません。

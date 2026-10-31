@@ -9,6 +9,22 @@ const eventDate = z.union([
   z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/),
 ]);
 const asset = z.enum([
+  "meeting",
+  "nf-crowd",
+  "nf-2024",
+  "ku-takumi",
+  "azabu",
+  "hypixel",
+  "bedwars",
+  "skyblock",
+  "bingo",
+  "blockhide",
+  "treasure-play",
+  "gunfight-lobby",
+  "athletic-course",
+  "campus-gate",
+  "campus-bicycles",
+
   "campus",
   "campus-wide",
   "treasure",
@@ -60,6 +76,8 @@ export const schemas = {
     common
       .extend({
         ...refs,
+        playMode: z.string().min(1).optional(),
+        highlights: z.array(z.string().min(1)).default([]),
         category: z.enum(["建築", "ゲーム・マップ", "技術"]),
         status: z.enum(["公開中", "制作中", "公開終了"]),
         edition: z.array(z.enum(["Java版", "統合版"])).min(1),
@@ -82,6 +100,9 @@ export const schemas = {
       ...refs,
       eventDate,
       eventEndDate: z.iso.date().optional(),
+      periodLabel: z.string().min(1).optional(),
+      location: z.string().min(1).optional(),
+      gallery: z.array(z.object({ image: asset, alt: z.string().min(1) })).default([]),
       role: z.string().min(1),
       outcome: z.string().min(1),
     }),
