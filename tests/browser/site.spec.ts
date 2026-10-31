@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+// Site checks must not depend on the availability or markup of a third party.
+test.beforeEach(async ({ page }) => {
+  await page.route("https://platform.twitter.com/widgets.js", route => route.abort());
+});
 const routes = [
   "/",
   "/about/",
