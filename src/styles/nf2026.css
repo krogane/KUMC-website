@@ -100,7 +100,6 @@ html:has(.nf-page) { scroll-behavior: auto; }
 .nf .nf-schedule li > time { display: block; font-size: 28px; font-weight: 750; line-height: 1.5; }
 .nf .nf-schedule li > time span { font-size: 15px; }
 .nf .nf-schedule li p { font-size: 19px; margin-top: 8px; white-space: nowrap; }
-.nf .nf-schedule li:last-child { color: light-dark(#214d88, var(--blue)); }
 .nf-section-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
 .nf-section-nav .arrow-icon { transform: rotate(90deg); }
 

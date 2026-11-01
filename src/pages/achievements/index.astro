@@ -16,11 +16,7 @@ const years = [...new Set(all.map(a => a.data.eventDate.slice(0, 4)))];
         {d.periodLabel ? <p class="muted">{d.periodLabel}</p> : <time datetime={d.eventDate}>{dateLabel(d.eventDate)}{d.eventEndDate && `〜${dateLabel(d.eventEndDate)}`}</time>}
         <h3>{d.title}</h3>
         <p>{d.summary}</p>
-        <dl class="event-facts">
-          {d.location && <><dt>会場・形式</dt><dd>{d.location}</dd></>}
-          <dt>KUMCの担当</dt><dd>{d.role}</dd>
-        </dl>
-        <a class="text-link" href={`/achievements/${d.slug}/`}>実施内容を詳しく見る <Arrow /></a>
+        <a class="text-link" href={d.slug === 'nf-2025' ? d.publicSourceUrls[0] : `/achievements/${d.slug}/`} target={d.slug === 'nf-2025' ? '_blank' : undefined} rel={d.slug === 'nf-2025' ? 'noopener noreferrer' : undefined}>実施内容を詳しく見る <Arrow external={d.slug === 'nf-2025'} /></a>
       </div>
       {d.cover && <Photo image={d.cover} alt={d.coverAlt || d.title} contain={d.cover === 'ku-takumi'} />}
     </article>)}
