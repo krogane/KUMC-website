@@ -15,5 +15,5 @@ const widths = [...new Set([400, 640, 960, 1200, asset.src.width].filter(width =
 ---
 <figure class:list={["nf-media", className]}>
   <Image src={asset.src} alt={asset.alt} widths={widths} sizes={sizes} format="webp" quality={85} loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : "auto"} />
-  {caption !== false && <figcaption>{caption ?? asset.caption}</figcaption>}
+  {caption !== false && <figcaption><slot name="caption">{caption ?? asset.caption}</slot></figcaption>}
 </figure>

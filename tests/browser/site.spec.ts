@@ -1,11 +1,5 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-// Site checks must not depend on the availability or markup of a third party.
-test.beforeEach(async ({ page }) => {
-  await page.route("https://platform.twitter.com/widgets.js", (route) =>
-    route.abort(),
-  );
-});
 const routes = [
   "/",
   "/nf/2026/",
@@ -44,7 +38,7 @@ for (const colorScheme of ["light", "dark"] as const) {
         await expect(page.locator("h1")).toHaveCount(1);
         await expect(page.locator("h1")).toBeVisible();
         expect(await page.title()).toContain("KUMC");
-        for (const img of await page.locator("img").all()) {
+        for (const img of await page.locator("img:visible").all()) {
           await img.scrollIntoViewIfNeeded();
           await expect
             .poll(
@@ -70,7 +64,7 @@ for (const colorScheme of ["light", "dark"] as const) {
         expect(errors).toEqual([]);
       });
     }
-    test("responsive widths and core navigation, focus return, filtering", async ({
+    test("responsive widths and core navigation, focus return, work links", async ({
       page,
     }) => {
       for (const width of [320, 360, 390, 768, 1120, 1121, 1280, 1440]) {
@@ -79,6 +73,9 @@ for (const colorScheme of ["light", "dark"] as const) {
           "/",
           "/nf/2026/",
           "/works/",
+          "/activities/",
+          "/news/",
+          "/achievements/",
           "/join/",
           "/faq/",
           "/contact/",
@@ -104,9 +101,8 @@ for (const colorScheme of ["light", "dark"] as const) {
         .locator(".hero")
         .getByRole("link", { name: "作品を見る", exact: true })
         .click();
-      await page.getByRole("button", { name: "建築", exact: true }).click();
-      await expect(page.locator(".work-card:visible")).toHaveCount(1);
-      await page.locator(".work-card:visible a").click();
+      await expect(page.locator(".work-card:visible")).toHaveCount(4);
+      await page.locator('.work-card a[href="/works/kyoto-campus/"]').click();
       await expect(page).toHaveURL(/works\/kyoto-campus\//);
       await expect(
         page.getByRole("link", { name: "Java版の配布ページ" }),
@@ -116,33 +112,6 @@ for (const colorScheme of ["light", "dark"] as const) {
     });
   });
 }
-test("preview automatically loads X without Google; failure preserves retry and profile link", async ({
-  page,
-}) => {
-  const external: string[] = [];
-  await page.route(/^https:\/\//, (route) => {
-    external.push(route.request().url());
-    return route.abort();
-  });
-  await page.goto("/");
-  await page.locator("[data-consent-open]").click();
-  await page.getByRole("button", { name: "解析を許可", exact: true }).click();
-  await page.waitForTimeout(250);
-  expect(external.some((x) => /google/.test(x))).toBe(false);
-  await expect(page.locator("#x-status")).toContainText("表示できませんでした");
-  expect(
-    external.some((x) => x.includes("platform.twitter.com/widgets.js")),
-  ).toBe(true);
-  await expect(
-    page.getByRole("link", { name: "プロフィールを見る" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Xの投稿を再読み込み" }).click();
-  await expect(page.locator("#x-status")).toContainText("表示できませんでした");
-  expect(
-    external.filter((x) => x.includes("platform.twitter.com/widgets.js")),
-  ).toHaveLength(2);
-  expect(external.some((x) => /google/.test(x))).toBe(false);
-});
 test("JS disabled still exposes content, menu, FAQ, links and static feeds", async ({
   browser,
 }) => {

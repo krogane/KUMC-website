@@ -3,12 +3,13 @@ import Page from '../../layouts/Page.astro';
 import Photo from '../../components/Photo.astro';
 import Arrow from '../../components/Arrow.astro';
 import '../../styles/content-pages.css';
+import {nf2026} from '../../data/nf2026';
 const sections = [
   ['meetings', 'オンライン例会'], ['hypixel', 'Hypixel'], ['nf', '11月祭への出展'],
   ['making', 'ゲーム・マップ制作'], ['education', '教育支援'], ['beyond', 'Minecraft以外の活動'],
 ];
 ---
-<Page title="活動内容" label="ACTIVITIES" description="Discordで週1回を基本に遊ぶ例会、京大キャンパスやミニゲームの制作、11月祭の出展、防災ワークショップ。KUMCで実際に行っている活動を紹介します。" wide>
+<Page title="活動内容" label="ACTIVITIES" description="週に一度の例会から11月祭の出展まで、KUMCの活動を紹介します。" wide>
   <nav class="content-nav" aria-label="活動内容の目次">{sections.map(([id, title]) => <a href={`#${id}`}>{title}</a>)}</nav>
 
   <section id="meetings" class="content-section">
@@ -47,7 +48,7 @@ const sections = [
         <p>自分のチームのベッドを守りながら、相手のベッドを壊すチーム対戦。KUMCでは4人ずつの4チームで戦うモードなどを遊びます。</p>
         <h3>SkyBlock</h3>
         <p>装備を集めてキャラクターを育成し、島々やダンジョンを攻略するゲームです。</p>
-        <a class="text-link" href="https://hypixel.net/">Hypixel公式サイト <Arrow external /></a>
+        <a class="text-link" href="https://hypixel.net/" target="_blank" rel="noopener noreferrer">Hypixel公式サイト <Arrow external /></a>
       </div>
       <Photo image="hypixel" alt="KUMCの紹介ページに掲載されたHypixelのロビーのプレイ画面" caption="Hypixelのロビー。ここから各ミニゲームに参加します。" />
     </div>
@@ -60,7 +61,7 @@ const sections = [
   <section id="nf" class="content-section content-split">
     <div class="content-copy">
       <h2>11月祭（NF）への出展</h2>
-      <p>京都大学の学園祭「11月祭」に、2024年・2025年に屋内出展しました。会場ではKUMCが作ったゲームを来場者が実際に操作し、建築や会報誌を手に取れる形で紹介します。</p>
+      <p>京都大学の学園祭「11月祭（NF）」に、2024年・2025年に屋内出展しました。会場ではKUMCが作ったゲームを来場者が実際に操作し、私たちの建築や会報誌を手に取れる形で展示・紹介しました。</p>
       <h3>2025年の出展内容</h3>
       <ul>
         <li>京大トレジャーラン・本格マイクラ銃撃戦の体験</li>
@@ -79,7 +80,7 @@ const sections = [
     <div class="content-copy">
       <h2>ゲーム・マップ制作</h2>
       <p>京都大学吉田キャンパスの再現建築をはじめ、宝探し、銃撃戦、アスレチック、サバイバルBINGOなどを制作しています。完成したゲームは例会や新歓、11月祭で使用し、一部は配布サイトで公開しています。</p>
-      <p>建築、コマンド・データパック、テクスチャ、ゲームルールの設計をメンバーで分担します。京大再現マップでは、実際のキャンパスで撮影した写真や航空写真、地理院地図を参考に、約半年かけて建物を再現しました。</p>
+      <p>建築、コマンド・データパック、テクスチャ、ゲームルールの設計をメンバーで分担して製作しています。京大再現マップでは、実際のキャンパスで撮影した写真や航空写真、地理院地図を参考に、約半年かけて建物を再現しました。</p>
       <a class="text-link" href="/works/">作品と遊び方を見る <Arrow /></a>
     </div>
     <Photo image="campus-wide" alt="KUMCがMinecraftで再現した京都大学の時計台と広場" />
@@ -88,7 +89,7 @@ const sections = [
   <section id="education" class="content-section">
     <div class="content-copy">
       <h2>教育支援事業の運営・制作</h2>
-      <p>子どもたちがMinecraftの中で課題を見つけ、解決策を作るワークショップを企画・運営しています。学びの内容に合わせたワールドの制作と、当日の操作・制作のサポートを担当します。</p>
+      <p>子どもたちがMinecraftの中で課題を見つけ、解決策を作るワークショップを企画・運営しています。</p>
     </div>
     <div class="game-list content-copy">
       <article>
@@ -103,10 +104,10 @@ const sections = [
       </article>
     </div>
     <div class="book-feature content-section">
-      <Photo image="ku-takumi" alt="KUMCの会報誌「KU匠 vol.2」の表紙" contain />
+      <Photo image="ku-takumi-vol3" alt="KUMCの会報誌「KU匠 Vol.3」の表紙" contain />
       <div class="content-copy">
-        <h3>会報誌「KU匠」の執筆・編集</h3>
-        <p>京大再現マップやメンバーの建築写真、Minecraftの解説を一冊にまとめています。「KU匠 vol.2」にはレッドストーンの論理回路、コマンド、エンドラRTAの解説などを収録しました。</p>
+        <h3>会報誌「KU匠」の販売</h3>
+        <p>2026年の新刊は「KU匠 Vol.3」。テーマは「マイクラ×学び」です。{nf2026.onsite.magazine.description}</p>
         <p>記事の執筆、誌面のデザイン、編集もメンバーが担当し、11月祭などで販売しています。</p>
         <a class="text-link" href="/works/#publication">会報誌について見る <Arrow /></a>
       </div>
@@ -123,8 +124,7 @@ const sections = [
     </div>
     <div class="content-copy">
       <h3>京大ゲーム部との生活サーバー</h3>
-      <p>京大ゲーム部と共同で、バニラサバイバルをベースにした生活サーバーを運営。2026年5月17日には、両団体で遊ぶ初回イベントを実施しました。</p>
-      <div class="actions"><a class="button" href="/join/">入会方法を見る <Arrow /></a></div>
+      <p>京大ゲーム部と共同で、バニラサバイバルをベースにした生活サーバーを運営しています。</p>
     </div>
   </section>
 </Page>

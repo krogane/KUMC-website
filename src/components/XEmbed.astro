@@ -1,6 +1,0 @@
----
-import Arrow from './Arrow.astro';
-import {site} from '../data/site';
-const screenName = new URL(site.x).pathname.split('/').filter(Boolean)[0];
----
-<section class="x-section" aria-labelledby="x-heading"><h3 id="x-heading">Xでも活動を発信しています。</h3><div class="x-reserved"><div id="x-placeholder"><span class="x-mark" aria-hidden="true">X</span><button type="button" class="button blue" id="load-x" hidden>Xの投稿を再読み込み</button><noscript><p>投稿はプロフィールからご覧ください。</p></noscript><p id="x-status" role="status"></p></div><div id="x-timeline" data-screen-name={screenName} role="region" aria-label="KUMCのX投稿"></div></div><p class="muted">投稿はXから自動で読み込みます。<a href="/privacy/">外部サービスへの接続について</a></p><a href={site.x} class="text-link" data-event="social_click" data-platform="x" data-placement="embed">プロフィールを見る <Arrow external/></a></section>

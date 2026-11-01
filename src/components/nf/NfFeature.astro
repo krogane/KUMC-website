@@ -13,14 +13,14 @@ import NfDateRange from "./NfDateRange.astro";
         <p class="nf-feature-date"><NfDateRange /></p>
         <p class="nf-feature-venue">{nf.venue.shortCampus}<br />{nf.venue.room}</p>
       </div>
-      <p class="nf-feature-description">{nf.homeDescription}</p>
+      <div class="nf-feature-description"><p class="nf-feature-festival">京都大学11月祭（NF）に出展</p><p>{nf.homeDescription}</p></div>
       <a class="nf-button nf-button-white" href={nf.path}>NF特設ページを見る <Arrow /></a>
     </div>
     <div class="nf-feature-collage">
-      <NfImage image="flight" class="nf-feature-flight" caption="京大トレジャーラン（配布版）" sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1440px) 64vw, 922px" />
-      <NfImage image="cover" class="nf-feature-thumbnail nf-feature-cover" caption="KU匠 Vol.3" sizes="(max-width: 900px) 30vw, 240px" />
+      <NfImage image="flight" class="nf-feature-flight" caption="体験型ミニゲーム" sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1440px) 64vw, 922px" />
+      <NfImage image="cover" class="nf-feature-thumbnail nf-feature-cover" caption="会報誌販売" sizes="(max-width: 900px) 30vw, 240px" />
       <NfImage image="city" class="nf-feature-thumbnail" caption="建築展示" sizes="(max-width: 900px) 30vw, 240px" />
-      <NfImage image="badgeDesign" class="nf-feature-thumbnail nf-feature-badge" caption="グッズのデザイン" sizes="(max-width: 900px) 30vw, 240px" />
+      <NfImage image="badgeDesign" class="nf-feature-thumbnail nf-feature-badge" sizes="(max-width: 900px) 30vw, 240px"><Fragment slot="caption"><span>ガチャガチャ</span><span>グッズ</span></Fragment></NfImage>
     </div>
   </div>
 </section>

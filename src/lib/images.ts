@@ -2,6 +2,7 @@ import meeting from "../assets/meeting.jpg";
 import nf_crowd from "../assets/nf-crowd.jpg";
 import nf_2024 from "../assets/nf-2024.jpg";
 import ku_takumi from "../assets/ku-takumi.jpg";
+import ku_takumi_vol3 from "../assets/nf2026/cover.webp";
 import azabu from "../assets/azabu.jpg";
 import hypixel from "../assets/hypixel.jpg";
 import bedwars from "../assets/bedwars.jpg";
@@ -23,6 +24,7 @@ export const images = {
   "nf-crowd": nf_crowd,
   "nf-2024": nf_2024,
   "ku-takumi": ku_takumi,
+  "ku-takumi-vol3": ku_takumi_vol3,
   "azabu": azabu,
   "hypixel": hypixel,
   "bedwars": bedwars,

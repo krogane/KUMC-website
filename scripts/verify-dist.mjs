@@ -43,6 +43,12 @@ for (const file of files) {
   )
     throw Error(`${file}: wrong canonical`);
   const refs = [];
+  $('a[href^="https://"]').each((_, el) => {
+    if (new URL($(el).attr("href")).origin === "https://www.kumc-club.net") return;
+    const rel = ($(el).attr("rel") || "").split(/\s+/);
+    if ($(el).attr("target") !== "_blank" || !rel.includes("noopener") || !rel.includes("noreferrer"))
+      throw Error(`${file}: external link must safely open a new tab: ${$(el).attr("href")}`);
+  });
   $("[href],[src]").each((_, el) => {
     for (const a of ["href", "src"]) {
       const v = $(el).attr(a);

@@ -1,5 +1,7 @@
 import { test, expect, type BrowserContext } from "@playwright/test";
+import { readFileSync } from "node:fs";
 const host = "https://www.kumc-club.net";
+const favicon = readFileSync(new URL("../../public/favicon.svg", import.meta.url));
 test.afterEach(async ({ context }) => {
   await context.unrouteAll({ behavior: "wait" });
 });
@@ -8,6 +10,12 @@ async function fixture(context: BrowserContext) {
   await context.route("https://**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.origin === host) {
+      // Favicon requests can arrive after load. Serve them directly so teardown
+      // cannot race a pending proxy request to the local preview server.
+      if (url.pathname === "/favicon.svg") {
+        await route.fulfill({ contentType: "image/svg+xml", body: favicon });
+        return;
+      }
       const response = await context.request.get(
         "http://127.0.0.1:4321" + url.pathname,
       );
@@ -135,7 +143,7 @@ test("expired persisted consent is not accepted", async ({ context, page }) => {
   await expect(page.locator("#consent-banner")).toBeVisible();
   expect(requests).toEqual([]);
 });
-test("CSP blocks unmanaged inline scripts and automatic X loading is independent from GA consent", async ({
+test("CSP blocks unmanaged inline scripts; profile links remain available without GA consent", async ({
   context,
   page,
 }) => {
@@ -150,7 +158,7 @@ test("CSP blocks unmanaged inline scripts and automatic X loading is independent
   expect(
     await page.evaluate(() => (window as any).__unsafeInlineExecuted),
   ).toBeUndefined();
-  await expect(page.locator("#x-status")).toContainText("表示できませんでした");
+  await expect(page.locator(".x-profile a")).toHaveAttribute("href", "https://x.com/KUMC_X");
   expect(requests.some((x) => x.includes("googletagmanager"))).toBe(false);
 });
 test("allowlisted join, download and social events fire once with controlled parameters", async ({
@@ -206,7 +214,13 @@ test("withdrawal from another tab stops an already loaded tag", async ({
   await other.goto(host + "/contact/");
   await expect.poll(() => requests.length).toBe(2);
   await other.locator("footer [data-consent-open]").click();
-  await other.getByRole("button", { name: "許可しない", exact: true }).click();
+  // Both tabs reload after withdrawal. Wait for the new documents to finish
+  // loading before asserting or triggering another reload in the fixture.
+  await Promise.all([
+    page.waitForEvent("load"),
+    other.waitForEvent("load"),
+    other.getByRole("button", { name: "許可しない", exact: true }).click(),
+  ]);
   await expect(page.locator("#ga-script")).toHaveCount(0);
   await expect(other.locator("#ga-script")).toHaveCount(0);
   await page.reload();

@@ -1,4 +1,3 @@
-import { initXEmbed } from "./x-embed.js";
 import {
   CONSENT_KEY,
   readConsent,
@@ -186,26 +185,6 @@ document.addEventListener("click", (e) => {
 matchMedia("(min-width:1121px)").addEventListener("change", (e) => {
   if (e.matches && menu) menu.open = false;
 });
-const filters = document.querySelector("[data-filters]");
-if (filters) {
-  filters.hidden = false;
-  filters.addEventListener("click", (e) => {
-    const button = e.target.closest("button[data-filter]");
-    if (!button) return;
-    for (const b of filters.querySelectorAll("button"))
-      b.setAttribute("aria-pressed", String(b === button));
-    let count = 0;
-    for (const card of document.querySelectorAll("[data-category]")) {
-      card.hidden =
-        button.dataset.filter !== "all" &&
-        card.dataset.category !== button.dataset.filter;
-      if (!card.hidden) count++;
-    }
-    document.getElementById("filter-count").textContent =
-      `${count}件の作品を表示しています。`;
-  });
-}
-initXEmbed();
 
 for (const label of document.querySelectorAll("[data-feed-stale]"))
   if (
