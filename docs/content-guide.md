@@ -81,6 +81,10 @@ publicSourceUrls: []
 
 FAQは `src/data/faq.json`、活動は `src/data/activities.json`。関連slugの存在は検証され、非公開の関連詳細は表示されません。外部リンクはHTTPS、連絡用メールは共通設定のみを使います。
 
+FAQはカテゴリごとの `id`・`title`・`items` で管理し、各質問に `id`・`q`・`a`、必要に応じて関連ページの `link`（`href`・`label`）を指定します。`/faq/` に全件、`/join/` に `featuredQuestions` で選んだ6件を共通部品で表示します。回答は両ページで共有するため、修正はJSONのみで行ってください。
+
+2026年11月1日に[公開Notion「よくある質問」](https://kumc-club.notion.site/330b66811ed780828cedd0c1d7f862dc)の18項目を確認し、既存サイトの案内から7項目を補足しました。新歓の日程・説明会と男女比の記述は2026年の案内であることを明記しています。原資料の固定例会時刻は、活動ページの現行案内（週1回を基本、日時はDiscordで告知）に合わせました。小学生の入会対象外という条件とDiscord自体の年齢規約を区別し、原資料の「12歳未満」をDiscordの利用可能年齢として転載しないでください。新歓の案内を更新する際は、対象年度と開催情報を再確認してください。
+
 ## NF 2026
 
 開催情報と企画紹介は `src/data/nf2026.ts` に集約し、トップ告知と `/nf/2026/` で共有します。専用画像は `src/assets/nf2026/`、代替テキスト・キャプションは `src/lib/nf-images.ts`、レイアウトは `src/components/nf/` と `src/pages/nf/2026/index.astro`、局所スタイルは `src/styles/nf2026.css` です。新しいAPIやCMSはありません。

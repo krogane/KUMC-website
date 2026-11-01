@@ -1,0 +1,12 @@
+---
+interface Props {
+  q: string;
+  a: string;
+  link?: { href: string; label: string };
+}
+const { q, a, link } = Astro.props;
+---
+<details class="faq-item">
+  <summary>{q}</summary>
+  <p>{a}{link && <> <a href={link.href}>{link.label}</a></>}</p>
+</details>

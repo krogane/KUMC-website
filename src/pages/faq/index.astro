@@ -1,0 +1,35 @@
+---
+import Page from '../../layouts/Page.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import faq from '../../data/faq.json';
+import '../../styles/content-pages.css';
+---
+<Page
+  title="よくある質問"
+  label="FAQ"
+  description="入会や新歓、費用、活動について、よくいただく質問をまとめました。気になる質問を開くと回答をご覧いただけます。"
+>
+  <nav class="content-nav" aria-label="よくある質問の目次">
+    {faq.map(({ id, title }) => <a href={`#${id}`}>{title}</a>)}
+  </nav>
+  {faq.map(({ id, title, items }) => (
+    <section class="faq-section" aria-labelledby={id}>
+      <h2 id={id}>{title}</h2>
+      {items.map((item) => <FaqItem {...item} />)}
+    </section>
+  ))}
+  <section class="callout" aria-labelledby="more-questions">
+    <h2 id="more-questions">解決しないときは</h2>
+    <p>気になることがあれば、メールまたは公式XのDMからお気軽にご相談ください。</p>
+    <div class="actions">
+      <a class="button" href="/contact/">お問い合わせへ</a>
+      <a class="button secondary" href="/join/">入会方法を見る</a>
+    </div>
+  </section>
+</Page>
+
+<style>
+  :global(html:has(.faq-section)) { scroll-behavior: auto; }
+  .faq-section + .faq-section { margin-top: 48px; }
+  .faq-section h2 { scroll-margin-top: 110px; }
+</style>
