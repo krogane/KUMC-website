@@ -6,12 +6,12 @@ const {placement, wide = false} = Astro.props;
 ---
 <aside class:list={['x-profile', {'x-profile-wide': wide}]} aria-label="KUMC公式X">
   <div class="x-profile-icon" aria-hidden="true">
-    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.8-7.3L5.8 22H2.6l8.2-9.4L1 2h6.4l4.4 6.7L18.9 2ZM17.8 20h1.7L6.4 4H4.6l13.2 16Z"/></svg>
+    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.154h7.594l5.243 6.932 6.064-6.933Zm-1.29 19.46h2.039L6.487 3.24H4.3z"/></svg>
   </div>
   <div class="x-profile-copy">
     <p class="section-label">FOLLOW US</p>
     <h2><span>Xでも活動を</span><span>発信しています。</span></h2>
     <p>例会やイベントのお知らせ、日々の活動を公式Xでお届けします。</p>
   </div>
-  <a href={site.x} class="text-link" target="_blank" rel="noopener noreferrer" data-event="social_click" data-platform="x" data-placement={placement}>@KUMC_X <span>プロフィールを見る</span> <Arrow external/></a>
+  <a href={site.x} class="text-link" target="_blank" rel="noopener noreferrer" data-event="social_click" data-platform="x" data-placement={placement}><span>KUMC_Xのプロフィールを見る</span> <Arrow external/></a>
 </aside>

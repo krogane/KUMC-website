@@ -29,7 +29,7 @@ export const nf2026 = {
       title: "体験型ミニゲーム",
       description:
         "Minecraftで再現した京大キャンパスで、制限時間内にお宝を集めて得点を競うゲーム。屋上や中庭を探索し、ジャンプやエリトラの滑空で高得点を目指します。",
-      conditions: "会場のPCで体験・有料",
+      conditions: "会場のPCで体験",
       support: "操作はスタッフがサポート。混雑時は整理券を配布します。",
     },
     exhibition: {

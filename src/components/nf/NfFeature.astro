@@ -2,6 +2,7 @@
 import "../../styles/nf2026.css";
 import { nf2026 as nf } from "../../data/nf2026";
 import Arrow from "../Arrow.astro";
+import MagazineShopLink from "../MagazineShopLink.astro";
 import NfImage from "./NfImage.astro";
 import NfDateRange from "./NfDateRange.astro";
 ---
@@ -21,6 +22,7 @@ import NfDateRange from "./NfDateRange.astro";
       <NfImage image="cover" class="nf-feature-thumbnail nf-feature-cover" caption="会報誌販売" sizes="(max-width: 900px) 30vw, 240px" />
       <NfImage image="city" class="nf-feature-thumbnail" caption="建築展示" sizes="(max-width: 900px) 30vw, 240px" />
       <NfImage image="badgeDesign" class="nf-feature-thumbnail nf-feature-badge" sizes="(max-width: 900px) 30vw, 240px"><Fragment slot="caption"><span>ガチャガチャ</span><span>グッズ</span></Fragment></NfImage>
+      <p class="nf-feature-shop"><MagazineShopLink /></p>
     </div>
   </div>
 </section>

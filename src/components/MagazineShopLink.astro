@@ -1,0 +1,7 @@
+---
+import {site} from '../data/site';
+import Arrow from './Arrow.astro';
+interface Props { class?: string }
+const {class: className = 'text-link'} = Astro.props;
+---
+<a href={site.booth} class={className} target="_blank" rel="noopener noreferrer"><span>オンライン販売（BOOTH）</span> <Arrow external/></a>

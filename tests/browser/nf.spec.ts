@@ -27,7 +27,8 @@ test("NF dates, editions and visitor information stay associated with the right 
   const goods = page.getByRole("article", { name: "オリジナルグッズのガチャガチャ", exact: true });
   await expect(goods).not.toContainText(/\d+円/);
   const treasure = page.getByRole("article", { name: "体験型ミニゲーム", exact: true });
-  await expect(treasure).toContainText("会場のPCで体験・有料");
+  await expect(treasure).toContainText("会場のPCで体験");
+  await expect(treasure).not.toContainText("有料");
   await expect(treasure).not.toContainText(/\d+円/);
   await expect(page.getByRole("article", { name: "会報誌「KU匠」", exact: true })).not.toContainText(/\d+円/);
   await expect(page.locator(".nf-connection")).toContainText("接続情報は11月20日公開予定。");

@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Arrow from "../../../components/Arrow.astro";
+import MagazineShopLink from "../../../components/MagazineShopLink.astro";
 import NfDateRange from "../../../components/nf/NfDateRange.astro";
 import NfIcon from "../../../components/nf/NfIcon.astro";
 import NfImage from "../../../components/nf/NfImage.astro";
@@ -94,6 +95,7 @@ import "../../../styles/nf2026.css";
             <p class="nf-magazine-theme">{nf.onsite.magazine.theme}</p>
             <p>{nf.onsite.magazine.description}</p>
             <p class="nf-back-issue">{nf.onsite.magazine.backIssue}</p>
+            <p><MagazineShopLink class="nf-button" /></p>
           </div>
         </div>
       </article>

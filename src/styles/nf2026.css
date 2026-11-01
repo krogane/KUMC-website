@@ -66,6 +66,8 @@ html:has(.nf-page) { scroll-behavior: auto; }
 .nf .nf-feature-description { margin: 24px 0 30px; padding-top: 24px; border-top: 1px solid #ffffff55; color: #e4effb; font-size: 18px; line-height: 1.9; }
 .nf .nf-feature-festival { color: #fff; font-weight: 750; margin-bottom: 12px; }
 .nf .nf-feature-copy .nf-button { width: 100%; font-size: 20px; }
+.nf .nf-feature-shop { grid-column: 1 / -1; margin-top: 4px; font-size: 14px; }
+.nf .nf-feature-shop a { color: #fff; }
 .nf-feature-collage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .nf .nf-feature-collage .nf-media { min-width: 0; position: relative; }
 .nf .nf-feature-collage .nf-media figcaption { position: absolute; bottom: 0; left: 0; margin: 0; padding: 5px 9px; background: light-dark(#102c4f, var(--footer-bg)); color: #fff; font-size: 13px; }
@@ -145,7 +147,7 @@ html:has(.nf-page) { scroll-behavior: auto; }
 .nf .nf-specs li > span > span { display: inline; }
 .nf .nf-specs li > span > span + span::before { content: " / "; color: light-dark(#637b9a, var(--muted)); white-space: pre-wrap; }
 .nf-online-exhibitions { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; align-items: end; }
-.nf .nf-online-exhibitions .nf-media img { aspect-ratio: 2.5; object-fit: cover; }
+.nf .nf-online-exhibitions .nf-media img { aspect-ratio: 16 / 10; object-fit: cover; object-position: center; }
 .nf .nf-online-exhibitions h3 { font-size: 28px; margin-top: 18px; }
 .nf .nf-online-exhibitions .nf-copy > p { margin-top: 10px; font-size: 17px; }
 .nf .nf-connection { border-top: 1px solid light-dark(#d7e4f2, var(--line)); margin-top: 36px; padding: 24px 0 36px; font-size: 18px; text-align: center; }

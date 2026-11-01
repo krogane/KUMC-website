@@ -6,6 +6,7 @@ export const site = {
   email: "kumcminecraft@gmail.com",
   x: "https://x.com/KUMC_X",
   blog: "https://kumc.hatenablog.com/",
+  booth: "https://kumc.booth.pm/",
   colony:
     "https://minecraft-mcworld.com/author/2937761467834624754e30c1ed9db1390dc5f974/",
   joinUrl: import.meta.env.PUBLIC_JOIN_URL || "",
