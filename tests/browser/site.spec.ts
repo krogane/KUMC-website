@@ -20,6 +20,7 @@ const routes = [
   "/achievements/nf-2025/",
   "/achievements/bosai-camp-2026/",
   "/join/",
+  "/faq/",
   "/contact/",
   "/collaboration/",
   "/news/",
@@ -79,6 +80,7 @@ for (const colorScheme of ["light", "dark"] as const) {
           "/nf/2026/",
           "/works/",
           "/join/",
+          "/faq/",
           "/contact/",
           "/collaboration/",
         ]) {
@@ -161,5 +163,11 @@ test("JS disabled still exposes content, menu, FAQ, links and static feeds", asy
   ).toBeVisible();
   await page.locator(".faq-item summary").first().click();
   await expect(page.locator(".faq-item").first()).toHaveAttribute("open", "");
+  await page.getByRole("link", { name: "よくある質問をすべて見る" }).first().click();
+  await expect(page).toHaveURL(/\/faq\/$/);
+  await page.getByRole("navigation", { name: "よくある質問の目次" })
+    .getByRole("link", { name: "費用について", exact: true }).click();
+  await page.getByText("企画・イベントなどで費用はかかりますか？", { exact: true }).click();
+  await expect(page.locator(".faq-item[open]")).toContainText("飲食代は原則として自己負担");
   await context.close();
 });

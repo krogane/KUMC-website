@@ -9,6 +9,7 @@ export async function GET() {
     "/works/",
     "/achievements/",
     "/join/",
+    "/faq/",
     "/contact/",
     "/news/",
     "/collaboration/",
