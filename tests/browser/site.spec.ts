@@ -135,7 +135,7 @@ test("JS disabled still exposes content, menu, FAQ, links and static feeds", asy
   await page.getByRole("link", { name: "よくある質問をすべて見る" }).first().click();
   await expect(page).toHaveURL(/\/faq\/$/);
   await page.getByRole("navigation", { name: "よくある質問の目次" })
-    .getByRole("link", { name: "費用について", exact: true }).click();
+    .getByRole("link", { name: /費用について/ }).click();
   await page.getByText("企画・イベントなどで費用はかかりますか？", { exact: true }).click();
   await expect(page.locator(".faq-item[open]")).toContainText("飲食代は原則として自己負担");
   await context.close();
