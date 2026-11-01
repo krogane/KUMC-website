@@ -1,7 +1,9 @@
 import { test, expect, type BrowserContext } from "@playwright/test";
 import { readFileSync } from "node:fs";
 const host = "https://www.kumc-club.net";
-const favicon = readFileSync(new URL("../../public/favicon.svg", import.meta.url));
+const icons = new Map(["favicon.png", "favicon.ico", "apple-touch-icon.png"].map(name => [
+  `/${name}`, { contentType: name.endsWith(".ico") ? "image/x-icon" : "image/png", body: readFileSync(new URL(`../../public/${name}`, import.meta.url)) }
+]));
 test.afterEach(async ({ context }) => {
   await context.unrouteAll({ behavior: "wait" });
 });
@@ -12,8 +14,9 @@ async function fixture(context: BrowserContext) {
     if (url.origin === host) {
       // Favicon requests can arrive after load. Serve them directly so teardown
       // cannot race a pending proxy request to the local preview server.
-      if (url.pathname === "/favicon.svg") {
-        await route.fulfill({ contentType: "image/svg+xml", body: favicon });
+      const icon = icons.get(url.pathname);
+      if (icon) {
+        await route.fulfill(icon);
         return;
       }
       const response = await context.request.get(
