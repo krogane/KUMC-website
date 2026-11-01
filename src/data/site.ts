@@ -24,6 +24,7 @@ export const nav = [
   ["/works/", "作品"],
   ["/achievements/", "実績"],
   ["/news/", "ニュース"],
+  ["/nf/2026/", "NF特設ページ"],
   ["/join/", "入会方法"],
   ["/collaboration/", "ご依頼・連携"],
 ];
