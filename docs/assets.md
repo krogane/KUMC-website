@@ -16,7 +16,10 @@
 | `src/assets/nf2026/city.webp` | KUMCの企画紹介素材に含まれるメンバーの建築作品 | NF告知・建築展示 |
 | `src/assets/nf2026/cover.webp` | KU匠 Vol.3の確認済み表紙原稿の表面 | NF告知・会報誌紹介 |
 | `src/assets/nf2026/clock-design.webp`・`badge-design.webp` | 時計台・KUMCの確認済み入稿デザイン | NF告知・ガチャガチャ。完成品写真ではなくデザインとして表示 |
-| `src/assets/nf2026/online.webp` | KUMCのオンライン企画紹介素材 | NFオンライン紹介。特定ゲームの画面とは表記しない |
+| `src/assets/nf2026/onsite.webp` | 依頼者指定のNF紹介画像（2026年11月1日差し替え） | トップページのNF特設セクション・現地企画紹介。画像全体を表示 |
+| `src/assets/nf2026/online.webp` | 依頼者指定のオンライン企画紹介画像（2026年11月1日差し替え） | NFオンライン紹介。画像全体を表示 |
+| `src/assets/nf2026/drift.webp` | 依頼者指定のDriftプレイ画像 | NF特設ページのDrift紹介 |
+| `src/assets/nf2026/collaboration.webp` | 依頼者指定のむっつんさんの建築画像 | NF特設ページのむっつんさんコラボ展示紹介 |
 
 初版の上記6点は、Minecraft内の実作品画像です。WebP・OGPはこれらから生成した派生ファイルです。タイトルロゴは青のテキスト「KUMC」と正式名称、faviconは本サイト用のK図案であり、既存の公式ロゴ画像を復元したものではありません。生成AIによる検討画像は `.qa/` のみで、サイト・Git公開物には収録しません。
 

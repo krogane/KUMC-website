@@ -64,7 +64,7 @@ import "../../../styles/nf2026.css";
       <div class="container nf-onsite-heading"><h2 id="nf-onsite-title" class="nf-heading nf-heading-rule">会場で楽しめる企画</h2></div>
       <article class="nf-treasure" aria-labelledby="nf-treasure-title">
         <div class="container">
-          <NfImage image="flight" class="nf-treasure-flight" />
+          <NfImage image="onsite" class="nf-onsite-image" />
           <div class="nf-treasure-grid">
             <div class="nf-copy">
               <h3 id="nf-treasure-title" class="nf-project-heading nf-heading-bar">{nf.onsite.treasure.title}</h3>
@@ -135,6 +135,7 @@ import "../../../styles/nf2026.css";
           {nf.online.games.map(game => (
             <article class="nf-copy" aria-labelledby={game.id}>
               <h3 id={game.id} class="nf-project-heading">{game.title}</h3>
+              {game.id === "nf-drift" && <NfImage image="drift" class="nf-game-image" sizes="(max-width: 900px) calc(100vw - 40px), 632px" />}
               <p>{game.description}</p>
               <ul class="nf-specs">
                 <li><NfIcon name="game" /><span><span>{game.edition}</span><span>{game.players}</span><span>{game.recommendedAge}</span></span></li>
@@ -150,6 +151,7 @@ import "../../../styles/nf2026.css";
             <p>{nf.online.buildings.description}</p>
           </article>
           <article class="nf-copy" aria-labelledby="nf-collaboration-title">
+            <NfImage image="collaboration" class="nf-collaboration-image" caption={false} sizes="(max-width: 900px) calc(100vw - 40px), 576px" />
             <h3 id="nf-collaboration-title" class="nf-project-heading">{nf.online.collaboration.title}</h3>
             <p>{nf.online.collaboration.description}</p>
           </article>

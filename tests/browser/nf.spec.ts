@@ -32,7 +32,7 @@ test("NF dates, editions and visitor information stay associated with the right 
   await expect(treasure).not.toContainText(/\d+円/);
   await expect(page.getByRole("article", { name: "会報誌「KU匠」", exact: true })).not.toContainText(/\d+円/);
   await expect(page.locator(".nf-connection")).toContainText("接続情報は11月20日公開予定。");
-  await expect(page.locator(".nf-treasure-flight figcaption")).toHaveText("体験型ミニゲームのプレイ画面");
+  await expect(page.locator(".nf-onsite-image figcaption")).toHaveText("京大マイクラワールドのNF紹介画像");
   await expect(page.locator(".nf-online-image figcaption")).toHaveText("オンライン企画の紹介画像");
   expect(await page.locator(".nf-page").evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
   expect(await page.content()).not.toMatch(/drive\.google\.com|docs\.google\.com|discord\.gg|ジェットコースター/);
