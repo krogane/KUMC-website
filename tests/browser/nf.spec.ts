@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("NF dates, editions and prices stay associated with the right activity", async ({ page, request }) => {
+test("NF dates, editions and visitor information stay associated with the right activity", async ({ page, request }) => {
   await page.goto("/nf/2026/");
   await expect(page).toHaveTitle(/NF 2026｜京大マイクラワールド/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.kumc-club.net/nf/2026/");
@@ -19,20 +19,19 @@ test("NF dates, editions and prices stay associated with the right activity", as
   await expect(mmo).toContainText("1〜4人");
   await expect(mmo).toContainText("15歳以上推奨");
   await expect(mmo).toContainText("数時間〜");
-  await expect(mmo).toContainText("制作：KUMC＆むっつん");
+  await expect(mmo).not.toContainText("制作：KUMC＆むっつん");
   const drift = page.getByRole("article", { name: "Drift", exact: true });
   for (const text of ["Java版 1.20.1", "1〜3人", "16歳以上推奨", "1回約45分", "公開予定：11月20〜22日", "晶石"]) {
     await expect(drift).toContainText(text);
   }
   const goods = page.getByRole("article", { name: "オリジナルグッズのガチャガチャ", exact: true });
-  await expect(goods.locator("dl > div").first()).toHaveText("缶バッジ1回 300円");
-  await expect(goods.locator("dl > div").last()).toHaveText("アクリルキーホルダー1回 400円");
-  const treasure = page.getByRole("article", { name: "京大トレジャーラン", exact: true });
+  await expect(goods).not.toContainText(/\d+円/);
+  const treasure = page.getByRole("article", { name: "体験型ミニゲーム", exact: true });
   await expect(treasure).toContainText("会場のPCで体験・有料");
   await expect(treasure).not.toContainText(/\d+円/);
   await expect(page.getByRole("article", { name: "会報誌「KU匠」", exact: true })).not.toContainText(/\d+円/);
   await expect(page.locator(".nf-connection")).toContainText("接続情報は11月20日公開予定。");
-  await expect(page.locator(".nf-treasure-flight figcaption")).toContainText("配布版");
+  await expect(page.locator(".nf-treasure-flight figcaption")).toHaveText("体験型ミニゲームのプレイ画面");
   await expect(page.locator(".nf-online-image figcaption")).toHaveText("オンライン企画の紹介画像");
   expect(await page.locator(".nf-page").evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
   expect(await page.content()).not.toMatch(/drive\.google\.com|docs\.google\.com|discord\.gg|ジェットコースター/);

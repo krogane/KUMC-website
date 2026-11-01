@@ -12,7 +12,7 @@ import "../../../styles/nf2026.css";
   title={nf.pageTitle}
   description={nf.description}
   image="/og/nf-2026.jpg"
-  imageAlt="京大トレジャーランで、再現された京都大学の時計台へ滑空するプレイ画面（配布版）"
+  imageAlt="体験型ミニゲームで、再現された京都大学の時計台へ滑空するプレイ画面"
   breadcrumbs={[{ name: "NF 2026", url: nf.path }]}
 >
   <div class="nf nf-page">
@@ -47,7 +47,6 @@ import "../../../styles/nf2026.css";
                 </li>
               ))}
             </ul>
-            <p class="nf-timezone">時刻はすべて日本時間</p>
           </div>
         </div>
         <nav class="nf-section-nav" aria-label="NFの企画と会場案内">
@@ -109,11 +108,6 @@ import "../../../styles/nf2026.css";
             </div>
             <div class="nf-copy">
               <p>{nf.onsite.goods.description}</p>
-              <dl class="nf-prices">
-                {nf.onsite.goods.prices.map(price => (
-                  <div><dt>{price.label}</dt><dd>1回 <strong>{price.yen}</strong>円</dd></div>
-                ))}
-              </dl>
             </div>
           </div>
         </div>
@@ -143,7 +137,6 @@ import "../../../styles/nf2026.css";
               <ul class="nf-specs">
                 <li><NfIcon name="game" /><span><span>{game.edition}</span><span>{game.players}</span><span>{game.recommendedAge}</span></span></li>
                 <li><NfIcon name="clock" /><span><span>{game.duration}</span>{"period" in game && <span>{game.period}</span>}</span></li>
-                {"credit" in game && <li><NfIcon name="people" /><span>{game.credit}</span></li>}
               </ul>
             </article>
           ))}

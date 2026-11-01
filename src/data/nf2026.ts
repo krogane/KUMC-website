@@ -7,7 +7,7 @@ export const nf2026 = {
   festival: "京都大学11月祭（NF）2026",
   pageTitle: "NF 2026｜京大マイクラワールド",
   description:
-    "2026年11月20〜23日、京都大学・法経本館2階第六教室で開催。京大トレジャーラン、建築展示、会報誌、グッズ、ぬりえとオンライン企画をご紹介します。",
+    "2026年11月20〜23日、京都大学・法経本館2階第六教室で開催。体験型ミニゲーム、建築展示、会報誌、グッズ、ぬりえとオンライン企画をご紹介します。",
   introduction:
     "京大キャンパスを駆け巡る宝探し、建築展示、会報誌やグッズ、親子で楽しむぬりえ。会場とオンラインでMinecraftの世界を体験できます。",
   homeDescription:
@@ -26,7 +26,7 @@ export const nf2026 = {
   },
   onsite: {
     treasure: {
-      title: "京大トレジャーラン",
+      title: "体験型ミニゲーム",
       description:
         "Minecraftで再現した京大キャンパスで、制限時間内にお宝を集めて得点を競うゲーム。屋上や中庭を探索し、ジャンプやエリトラの滑空で高得点を目指します。",
       conditions: "会場のPCで体験・有料",
@@ -35,7 +35,7 @@ export const nf2026 = {
     exhibition: {
       title: "建築・クイズ展示",
       description:
-        "KUMCメンバーの建築写真を、細かな装飾や風景までじっくり鑑賞。Minecraftの英訳・和訳クイズ、豆知識、来場者が書き込める「あるある」も紹介します。",
+        "KUMCメンバーの建築写真を、細かな装飾や風景までじっくり鑑賞。Minecraftの英訳・和訳クイズ、豆知識、来場者が書き込める「マイクラあるある」も展示します。",
     },
     magazine: {
       title: "会報誌「KU匠」",
@@ -48,16 +48,12 @@ export const nf2026 = {
       title: "オリジナルグッズのガチャガチャ",
       description:
         "時計台やKUMCをモチーフにした缶バッジとアクリルキーホルダー。むっつんさんとのコラボデザインも登場予定。",
-      prices: [
-        { label: "缶バッジ", yen: 300 },
-        { label: "アクリルキーホルダー", yen: 400 },
-      ],
     },
     coloring: {
       title: "おえかき・ぬりえ",
       description:
         "A4のKUMCオリジナルぬりえを、色鉛筆で彩るコーナー。小さなお子様も保護者と一緒に楽しめます。",
-      conditions: "無料・作品の持ち帰りOK",
+      conditions: "作品の持ち帰りOK",
     },
   },
   online: {
@@ -73,7 +69,6 @@ export const nf2026 = {
         players: "1〜4人",
         recommendedAge: "15歳以上推奨",
         duration: "プレイ時間：数時間〜",
-        credit: "制作：KUMC＆むっつん",
       },
       {
         id: "nf-drift",
