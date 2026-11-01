@@ -24,8 +24,18 @@
     for (const button of document.querySelectorAll("[data-theme-value]")) {
       button.setAttribute(
         "aria-pressed",
-        String(button.dataset.themeValue === preference),
+        String(button.dataset.themeValue === theme),
       );
+    }
+    for (const button of document.querySelectorAll("[data-theme-toggle]")) {
+      const label = theme === "dark"
+        ? "現在はダークモード。ライトモードに切り替える"
+        : "現在はライトモード。ダークモードに切り替える";
+      button.setAttribute("aria-label", label);
+      button.title = label;
+      for (const icon of button.querySelectorAll("[data-theme-icon]")) {
+        icon.hidden = icon.dataset.themeIcon !== theme;
+      }
     }
     for (const control of document.querySelectorAll("[data-theme-control]")) {
       control.hidden = false;
@@ -41,9 +51,11 @@
   apply();
   document.addEventListener("DOMContentLoaded", apply, { once: true });
   document.addEventListener("click", (event) => {
-    const button = event.target.closest?.("[data-theme-value]");
+    const button = event.target.closest?.("[data-theme-value], [data-theme-toggle]");
     if (!button) return;
-    preference = normalize(button.dataset.themeValue);
+    preference = button.hasAttribute("data-theme-toggle")
+      ? (root.dataset.theme === "dark" ? "light" : "dark")
+      : normalize(button.dataset.themeValue);
     try {
       localStorage.setItem(key, preference);
     } catch {

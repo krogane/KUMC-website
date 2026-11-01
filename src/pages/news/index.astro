@@ -1,8 +1,10 @@
 ---
 import Page from '../../layouts/Page.astro';
 import Feed from '../../components/Feed.astro';
+import XProfile from '../../components/XProfile.astro';
 import {site} from '../../data/site';
 ---
 <Page title="ニュース" label="NEWS" description="公式ブログの記事と、配布作品の新着情報をお届けします。" wide>
-<div class="news-columns"><section><h2>ブログの新着記事</h2><Feed source="blog" limit={site.feedLimits.news} showSource={false}/></section><section><h2>配布サイトの新着作品</h2><Feed source="colony" limit={site.feedLimits.news}/></section></div>
+<div class="news-columns news-feeds"><section><h2>ブログの新着記事</h2><Feed source="blog" limit={site.feedLimits.news} showSource={false}/></section><section><h2>配布サイトの新着作品</h2><Feed source="colony" limit={site.feedLimits.news}/></section></div>
+<XProfile placement="news" wide/>
 </Page>

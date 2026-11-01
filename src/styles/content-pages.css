@@ -1,6 +1,10 @@
 /* Content layouts inherit the site's color, typography and spacing tokens. */
-.content-nav { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 20px 0; margin-bottom: 44px; border-block: 1px solid var(--line); }
-.content-nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--blue); font-weight: 650; }
+.content-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
+.content-nav a { min-height: 48px; display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--blue); font-weight: 650; text-decoration: none; transition: background .2s, border-color .2s; }
+.content-nav a::after { content: '↓'; font-size: 18px; flex-shrink: 0; }
+.content-nav a:hover { background: var(--panel); border-color: var(--blue); }
+.content-section, .work-overview { scroll-margin-top: 24px; }
+.content-section h2, .work-overview h2 { width: fit-content; max-width: 100%; padding: 12px 20px; border-radius: 4px; background: var(--button-bg); color: var(--button-ink); line-height: 1.5; }
 .content-section { padding-block: 52px; border-top: 1px solid var(--line); }
 .content-section:first-of-type { padding-top: 0; border-top: 0; }
 .content-split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start; }
@@ -23,7 +27,7 @@
 .work-overview h2 { margin-top: 0; }
 .catalog-heading { margin: 0 0 24px; }
 .catalog-intro { max-width: 760px; margin-bottom: 24px; }
-.work-facts { display: grid; grid-template-columns: 80px 1fr; margin: 18px 0 0; font-size: 14px; border-top: 1px solid var(--line); }
+.work-facts { display: grid; grid-template-columns: 80px 1fr; margin: 18px 0 0; font-size: 14px; }
 .work-facts dt, .work-facts dd { margin: 0; padding-top: 8px; }
 .work-facts dt { color: var(--muted); }
 .mini-game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 32px; }
@@ -45,7 +49,9 @@
 .event-story .text-link { margin-top: 8px; }
 .source-note { color: var(--muted); font-size: 14px; padding-top: 24px; border-top: 1px solid var(--line); margin-top: 28px; }
 @media (max-width: 767px) {
-  .content-nav { gap: 4px 20px; margin-bottom: 32px; }
+  .content-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; }
+  .content-nav a { gap: 8px; padding: 12px; font-size: 14px; }
+  .content-section h2, .work-overview h2 { padding: 10px 16px; }
   .content-section { padding-block: 36px; }
   .content-split, .event-story, .book-feature { grid-template-columns: 1fr; gap: 24px; }
   .content-copy h2 { margin-bottom: 18px; }

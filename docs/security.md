@@ -16,9 +16,9 @@ Markdownの任意HTMLを除去・サニタイズし、MDXは使いません。UR
 
 headの先頭付近にmeta CSPを置きます。`default-src 'self'`、`object-src 'none'`、`base-uri 'self'`、`form-action 'none'`。自作JSは同一サイトのファイル。JSON-LD等はビルド時に実内容のSHA-256ハッシュを生成します。スクリプトの `unsafe-inline`、`unsafe-eval`、無制限ワイルドカードは使いません。
 
-GA4とXの必要ホストだけを列挙します。Xの公式ウィジェット用にstyleの `unsafe-inline` は許可しています。許可ホストのサプライチェーンリスクは残ります。GAの外部コードは解析への同意後だけ読み込みます。X投稿欄のあるページは、初期表示時にXの公式ウィジェットへ接続し、投稿を自動表示します。X表示はGAの同意・拒否と独立しています。その他の外部画像・フォント・フィード通信は初期表示時には行いません。`strict-origin-when-cross-origin` を指定します。
+GA4に必要なホストだけを列挙し、外部コードは解析への同意後だけ読み込みます。サイト内のインラインスタイル用にstyleの `unsafe-inline` を許可します。Xは外部プロフィールへのリンクのみで、投稿の埋め込みや初期接続は行いません。外部画像・フォント・フィード通信も初期表示時には行いません。外部サイトへのリンクには `target="_blank" rel="noopener noreferrer"` を設定します。
 
-CSP本体は `src/lib/csp.mjs`、生成検証は `scripts/verify-dist.mjs`。X本体と本物のGAタグは公開環境で未検証のため、管理者が実通信・CSPログを照合する必要があります。ドメインを許可しただけで連携成功とは扱いません。
+CSP本体は `src/lib/csp.mjs`、生成検証は `scripts/verify-dist.mjs`。本物のGAタグの実通信・CSPログは公開環境で確認してください。ドメインを許可しただけで連携成功とは扱いません。
 
 ## GitHub Pagesで保証できないこと
 

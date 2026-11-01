@@ -64,11 +64,14 @@ test("NF homepage, keyboard anchors and destinations work without JavaScript", a
       ["参加に関する最新情報（X）", "https://x.com/KUMC_X"],
     ]) {
       // Verify actual navigation without depending on a third-party response.
-      await page.route(url, route => route.fulfill({ contentType: "text/html", body: "<p>External destination</p>" }));
+      await context.route(url, route => route.fulfill({ contentType: "text/html", body: "<p>External destination</p>" }));
       await page.getByRole("link", { name: label, exact: true }).focus();
+      const popupPromise = context.waitForEvent("page");
       await page.keyboard.press("Enter");
-      await expect(page).toHaveURL(url);
-      await page.goBack();
+      const popup = await popupPromise;
+      await expect(popup).toHaveURL(url);
+      await popup.close();
+      await expect(page).toHaveURL(/\/nf\/2026\//);
     }
     await page.locator("#nf-access").getByRole("link", { name: "お問い合わせ", exact: true }).focus();
     await page.keyboard.press("Enter");

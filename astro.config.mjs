@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import rehypeSanitize from "rehype-sanitize";
+import { externalLinks } from "./src/lib/external-links.mjs";
 import { loadEnv } from "vite";
 import { httpsUrl } from "./src/lib/schema.mjs";
 const env = {
@@ -26,6 +27,6 @@ export default defineConfig({
   trailingSlash: "always",
   build: { inlineStylesheets: "never" },
   devToolbar: { enabled: false },
-  markdown: { processor: unified({ rehypePlugins: [rehypeSanitize] }) },
+  markdown: { processor: unified({ rehypePlugins: [rehypeSanitize, externalLinks] }) },
   vite: { build: { sourcemap: false } },
 });
