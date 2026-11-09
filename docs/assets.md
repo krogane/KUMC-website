@@ -14,7 +14,7 @@
 | `src/assets/athletic.jpg` | [京大アスレチック](https://minecraft-mcworld.com/138433/)のKUMC制作画像 | 作品・OGP |
 | `src/assets/nf2026/flight.webp`・`treasures.webp` | 確認済みの京大トレジャーラン配布版のプレイ画像 | NF告知・現地企画。配布版と明記。flightからNF専用OGPを生成 |
 | `src/assets/nf2026/city.webp` | KUMCの企画紹介素材に含まれるメンバーの建築作品 | NF告知・建築展示 |
-| `src/assets/nf2026/cover.webp` | KU匠 Vol.3の確認済み表紙原稿の表面 | NF告知・会報誌紹介 |
+| `src/assets/nf2026/cover.webp` | 依頼者指定の印刷版「-1 表紙.pdf」の表紙全体（2026年11月9日差し替え） | NF告知・会報誌紹介 |
 | `src/assets/nf2026/clock-design.webp`・`badge-design.webp` | 時計台・KUMCの確認済み入稿デザイン | NF告知・ガチャガチャ。完成品写真ではなくデザインとして表示 |
 | `src/assets/nf2026/onsite.webp` | 依頼者指定のNF紹介画像（2026年11月1日差し替え） | トップページのNF特設セクション・現地企画紹介。画像全体を表示 |
 | `src/assets/nf2026/online.webp` | 依頼者指定のオンライン企画紹介画像（2026年11月1日差し替え） | NFオンライン紹介。画像全体を表示 |
